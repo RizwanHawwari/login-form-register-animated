@@ -1,0 +1,66 @@
+/* Same as before for consistency */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+:root {
+  --primary: #043d3d;
+  --secondary: #5ff094;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: var(--primary);
+  overflow: hidden;
+}
+.container {
+  position: relative;
+  width: 100%;
+  max-width: 800px;
+  padding: 20px;
+  background: #2c4766;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+h1 {
+  color: var(--secondary);
+  font-size: 2.5em;
+  margin-bottom: 20px;
+  text-align: center;
+}
+p {
+  color: #fff;
+  font-size: 1.2em;
+  margin-bottom: 20px;
+}
+.btn {
+  display: inline-block;
+  width: auto;
+  padding: 10px 20px;
+  background: var(--secondary);
+  border: none;
+  border-radius: 40px;
+  color: var(--primary);
+  font-size: 1em;
+  font-weight: 600;
+  text-decoration: none;
+  text-align: center;
+  transition: background 0.3s ease;
+  cursor: pointer;
+}
+.btn:hover {
+  background: #0b3c4a;
+  color: #fff;
+}
+.logout-link {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}

@@ -1,0 +1,172 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+:root {
+  --primary: #043d3d;
+  --secondary: #5ff094;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: var(--primary);
+}
+#error-message {
+  margin: auto;
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 20px;
+  font-size: 1em;
+  list-style-type: none;
+  width: 280px;
+  /* transition: 3s; */
+}
+#error-message ul {
+  margin: 0;
+  padding: 0;
+}
+#error-message li {
+  list-style-type: none;
+  text-align: center;
+  /* margin-bottom: 10px; */
+}
+.container {
+  position: relative;
+  width: 256px;
+  height: 256px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.container span {
+  position: absolute;
+  left: 0;
+  width: 18px;
+  height: 6px;
+  background: #358f80;
+  border-radius: 24px;
+  transform-origin: 128px;
+  transform: scale(2.5) rotate(calc(var(--i) * (360deg / 50)));
+  animation: kelapKelip 3s linear infinite;
+  animation-delay: calc(var(--i) * (3s / 50));
+}
+@keyframes kelapKelip {
+  0% {
+    background: var(--secondary);
+  }
+
+  25% {
+    background: var(--primary);
+  }
+  /* 
+  50% {
+    background: crimson;
+  } */
+}
+.login-box {
+  position: absolute;
+  width: 400px;
+}
+.login-box form {
+  width: 100%;
+  padding: 0 50px;
+}
+h2 {
+  font-size: 2em;
+  color: var(--secondary);
+  text-align: center;
+}
+.input-box {
+  position: relative;
+  margin: 25px 0;
+}
+.input-box input {
+  width: 100%;
+  height: 50px;
+  background: transparent;
+  border: 2px solid #358f80;
+  font-size: 1em;
+  color: #fff;
+  padding: 0 20px;
+  outline: none;
+  border-radius: 40px;
+  transition: 0.5s ease;
+}
+.input-box input:focus,
+.input-box input:valid {
+  border-color: var(--secondary);
+}
+.input-box label {
+  position: absolute;
+  top: 50%;
+  left: 20px;
+  transform: translateY(-50%);
+  font-size: 1em;
+  color: #fff;
+  pointer-events: none;
+  transition: 0.5s ease;
+}
+.input-box input:focus ~ label,
+.input-box input:valid ~ label {
+  top: 1px;
+  font-size: 0.8em;
+  padding: 0 6px;
+  background-color: var(--primary);
+  color: var(--secondary);
+}
+.input-box {
+  position: relative;
+  margin: 25px 0;
+  display: flex;
+  align-items: center;
+}
+.input-box input[type="checkbox"] {
+  width: auto;
+  height: auto;
+  margin-right: 10px;
+  accent-color: var(--secondary); /* Ubah warna ceklis sesuai kebutuhan */
+}
+.input-box .remember {
+  position: static; /* Atur posisi label */
+  top: auto;
+  left: auto;
+  transform: none;
+  font-size: 0.9em; /* Ukuran font label */
+  color: #fff;
+  cursor: pointer;
+}
+.btn {
+  width: 100%;
+  height: 45px;
+  background: var(--secondary);
+  border: none;
+  outline: none;
+  border-radius: 40px;
+  cursor: pointer;
+  font-size: 1em;
+  color: var(--primary);
+  font-weight: 600;
+}
+.signup-link {
+  margin: 20px 0 10px;
+  text-align: center;
+}
+.signup-link a {
+  font-size: 1em;
+  color: var(--secondary);
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.3s;
+}
+.signup-link a:hover {
+  text-decoration: underline;
+}

@@ -31,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['logout'])) {
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Member's Page</title>
-  <link rel="stylesheet" href="css-file/anu.css">
+  <link rel="stylesheet" href="css-file/anggota.css">
 </head>
 
 <body>
@@ -55,12 +55,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['logout'])) {
       <?php $i = 1; ?>
       <?php foreach( $siswa as $s ) : ?>
       <tr>
-        <th><?= $i; ?></th>
-        <th><a href="#">Edit </a>|<a href="#">Delete</a></th>
-        <th><?= $s["nama"]; ?></th>
-        <th><?= $s["nis"]; ?></th>
-        <th><?= $s["email"]; ?></th>
-        <th><?= $s["no_telp"]; ?></th>
+        <td><?= $i; ?></td>
+        <td><a href="update.php?id=<?= $s["id"]; ?>">Edit </a>|<a href="#">Delete</a></td>
+        <td><?= $s["nama"]; ?></td>
+        <td><?= $s["nis"]; ?></td>
+        <td><?= $s["email"]; ?></td>
+        <td><?= $s["no_telp"]; ?></td>
       </tr>
       <?php endforeach; ?>
       <?php $i++; ?>

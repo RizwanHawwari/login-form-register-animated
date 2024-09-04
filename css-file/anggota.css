@@ -103,3 +103,8 @@ p {
   padding: 6px;
   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
 }
+.container table th,
+.container table td {
+  padding: 10px;
+  color: #fff;
+}

@@ -1,5 +1,7 @@
 <?php
 session_start();
+require "functions.php";
+$siswa = query("SELECT * FROM siswa");
 
 // Check if the user is logged in
 if (!isset($_SESSION['session_username'])) {
@@ -39,9 +41,30 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['logout'])) {
 
   <div class="container">
     <h1>Welcome, <?php echo $username; ?>!</h1>
-    <p>You have successfully logged in. This is your member's page.</p>
+    <p>Kamu telah berhasil login dan ini adalah data siswa</p>
+    <table border="1" cellpadding="10" cellspacing="0">
+      <tr>
+        <th>No</th>
+        <th>Aksi</th>
+        <th>Nama</th>
+        <th>NIS</th>
+        <th>Email</th>
+        <th>No Telp</th>
+      </tr>
 
-
+      <?php $i = 1; ?>
+      <?php foreach( $siswa as $s ) : ?>
+      <tr>
+        <th><?= $i; ?></th>
+        <th><a href="#">Edit </a>|<a href="#">Delete</a></th>
+        <th><?= $s["nama"]; ?></th>
+        <th><?= $s["nis"]; ?></th>
+        <th><?= $s["email"]; ?></th>
+        <th><?= $s["no_telp"]; ?></th>
+      </tr>
+      <?php endforeach; ?>
+      <?php $i++; ?>
+    </table>
 
     <div class="logout-link">
       <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">

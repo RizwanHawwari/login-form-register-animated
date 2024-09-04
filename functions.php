@@ -44,5 +44,12 @@ function edit() {
 $result = mysqli_query($conn, $query);
 
 return mysqli_affected_rows($conn);
+} 
+function delete($nis) {
+  global $conn;
+  $q2 = "DELETE FROM siswa WHERE nis = '$nis'";
+  mysqli_query($conn, $q2);
+  return mysqli_affected_rows($conn);
+
 }
 ?>

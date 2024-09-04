@@ -27,11 +27,11 @@ $siswa = query("SELECT * FROM siswa");
             <tr>
                 <td><?= $i; ?></td>
                 <td><?= $row["nama"];?></td>
-                <td><?= $row["nis"];?></td>
+                <td></td>
                 <td><?= $row["email"];?></td>
                 <td><?= $row["no_telp"];?> </td>
                 <td><a href="update.php">Edit</a> | 
-                    <a href="#">Delete</a></td>
+                    <a href="delete.php?id=<?= $row["nis"];?>">Delete</a></td>
             </tr>
             <?php $i++; ?>
             <?php endforeach;?>

@@ -1,8 +1,7 @@
 <?php
 require "functions.php";
 
-$id = $_GET["id"];
-$siswa = query("SELECT * FROM siswa WHERE id = $id");
+$siswa = query("SELECT * FROM siswa");
 ?>
 
 <!DOCTYPE html>
@@ -23,12 +22,16 @@ $siswa = query("SELECT * FROM siswa WHERE id = $id");
                 <th>Action</th>
             </tr>
 
+            <?php foreach ($siswa as $row) : ?>
             <tr>
-                <td> </td>
-                <td> </td>
-                <td> </td>
-                <td> </td>
+                <td><?= $row["nama"];?></td>
+                <td><?= $row["nis"];?></td>
+                <td><?= $row["email"];?></td>
+                <td><?= $row["no_telp"];?> </td>
+                <td><a href="update.php">Edit</a> | 
+                    <a href="#">Delete</a></td>
             </tr>
+            <?php endforeach;?>
         </table>
     </div>
 </body>

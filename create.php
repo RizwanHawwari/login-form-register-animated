@@ -12,7 +12,7 @@ $siswa = query("SELECT * FROM siswa");
     <title>Admin Page</title>
 </head>
 <body>
-    <div class="container">
+    <div class="containers">
         <table border="1" cellpadding="10" cellspacing="0" >
             <tr>
                 <th>No</th>

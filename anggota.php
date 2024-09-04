@@ -1,15 +1,6 @@
 <?php
 session_start();
 
-$host_db    = "localhost";
-$user_db    = "root";
-$pass_db    = "";
-$nama_db    = "sekolah";
-$conn    = mysqli_connect($host_db, $user_db, $pass_db, $nama_db);
-
-$query = "SELECT * FROM siswa";
-$result = mysqli_query($conn, $query);
-
 // Check if the user is logged in
 if (!isset($_SESSION['session_username'])) {
     // Logika di sini tetap kosong tanpa redirect atau exit

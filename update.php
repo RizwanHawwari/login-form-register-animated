@@ -2,6 +2,20 @@
 require "functions.php";
 $id = $_GET["id"];
 $siswa = query("SELECT * FROM siswa WHERE id = $id");
+
+if ( isset($_POST["edit"]) ) {
+  if ( edit() > 0 ) {
+    echo "<script>
+    alert('Data Berhasil Diubah');
+    </script>";
+
+    header("Location: anggota.php");
+  } else {
+    echo "<script>
+    alert('Data Gagal Diubah!');
+    </script>";
+  }
+}
 ?>
 
 <!DOCTYPE html>
@@ -19,6 +33,7 @@ $siswa = query("SELECT * FROM siswa WHERE id = $id");
     <?php foreach ( $siswa as $s ) : ?>
     <form action="" method="post">
       <ul>
+        <input type="hidden" name="id" value="<?= $s["id"]; ?>">
         <li>
           <label for="nama">Nama: </label>
           <input type="text" id="nama" name="nama" value="<?= $s["nama"];?>">

@@ -15,15 +15,17 @@ $siswa = query("SELECT * FROM siswa");
     <div class="container">
         <table border="1" cellpadding="10" cellspacing="0" >
             <tr>
+                <th>No</th>
                 <th>Nama</th>
                 <th>Nis</th>
                 <th>Email</th>
                 <th>No Telphone</th>
                 <th>Action</th>
             </tr>
-
+            <?php $i = 1; ?>
             <?php foreach ($siswa as $row) : ?>
             <tr>
+                <td><?= $i; ?></td>
                 <td><?= $row["nama"];?></td>
                 <td><?= $row["nis"];?></td>
                 <td><?= $row["email"];?></td>
@@ -31,6 +33,7 @@ $siswa = query("SELECT * FROM siswa");
                 <td><a href="update.php">Edit</a> | 
                     <a href="#">Delete</a></td>
             </tr>
+            <?php $i++; ?>
             <?php endforeach;?>
         </table>
     </div>

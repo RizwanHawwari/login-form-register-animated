@@ -1,5 +1,16 @@
 <?php
 require "functions.php";
+if (isset($_POST["submit"])) {
+
+ if (create() > 0) {
+    header("Location: anggota.php");
+ } else { 
+    echo "<script>
+    alert('Data Gagal Ditambahkan');
+    </script>";
+ }
+
+}
 ?>
 
 <!DOCTYPE html>
@@ -11,25 +22,25 @@ require "functions.php";
 </head>
 <body>
 <div class="container">
-    <form action="" method="post">
+    <form action="" method="post" autocomplete="off">
       <ul>
         <li>
           <label for="nama">Nama: </label>
-          <input type="text" id="nama" name="nama">
+          <input type="text" id="nama" name="nama" required>
         </li>
         <li>
           <label for="nis">NIS: </label>
-          <input type="text" name="nis" id="nis" >
+          <input type="text" name="nis" id="nis"required>
         </li>
         <li>
           <label for="email">Email: </label>
-          <input type="email" name="email" id="email" >
+          <input type="email" name="email" id="email"required >
         </li>
         <li>
           <label for="no_telp">No Telp: </label>
-          <input type="tel" name="no_telp" id="no_telp">
+          <input type="tel" name="no_telp" id="no_telp"required>
         </li>
-        <button type="submit" name="edit">Edit</button>
+        <button type="submit" name="submit">submit</button>
       </ul>
     </form>
        

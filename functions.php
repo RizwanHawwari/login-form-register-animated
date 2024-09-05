@@ -45,11 +45,33 @@ $result = mysqli_query($conn, $query);
 
 return mysqli_affected_rows($conn);
 } 
-function delete($id) {
+function delete() {
   global $conn;
-  $q2 = "DELETE FROM siswa WHERE nis = '$id'";
+  $id = $_GET["id"];
+  $q2 = "DELETE FROM siswa WHERE id = '$id'";
   mysqli_query($conn, $q2);
   return mysqli_affected_rows($conn);
 
+}
+
+function create() {
+  global $conn;
+  $nama = htmlspecialchars($_POST["nama"]);
+  $nis = htmlspecialchars($_POST["nis"]);
+  $email = htmlspecialchars($_POST["email"]);
+  $no_telp = htmlspecialchars($_POST["no_telp"]);
+   $q1 = "SELECT nama FROM siswa WHERE nama = '$nama'";
+  $r1 = mysqli_query($conn, $q1);
+  if ( mysqli_fetch_assoc($r1) ) {
+    echo "<script>
+    alert('Nama Sudah Terdaftar');
+    </script>";
+      return false;
+    }  
+    $q2 = "INSERT INTO siswa VALUES (
+    '', '$nama', $nis, '$email', $no_telp)";
+
+    $r2 = mysqli_query($conn, $q2);
+    return mysqli_affected_rows($conn);
 }
 ?>

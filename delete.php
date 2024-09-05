@@ -3,17 +3,15 @@
 require "functions.php";
 
 
-$id = $_GET["id"];
-
-if (delete($id) > 0) {
+if (delete() > 0) {
     echo "<script>
     alert('Nis Sudah dihapus');
-    document.location.href = 'index.php';
+    document.location.href = 'anggota.php';
     </script>";
 } else {
     echo "<script>
     alert('Nis gagal dihapus');
-    document.location.href = 'index.php';
+    document.location.href = 'anggota.php';
     </script>";
 }
 

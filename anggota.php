@@ -56,7 +56,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['logout'])) {
       <?php foreach( $siswa as $s ) : ?>
       <tr>
         <td><?= $i; ?></td>
-        <td><a href="update.php?id=<?= $s["id"]; ?>">Edit </a>|<a href="#">Delete</a></td>
+        <td><a href="update.php?id=<?= $s["id"]; ?>">Edit </a>|<a href="delete.php?id=<?= $s['id']; ?>">Delete</a></td>
         <td><?= $s["nama"]; ?></td>
         <td><?= $s["nis"]; ?></td>
         <td><?= $s["email"]; ?></td>
@@ -65,6 +65,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['logout'])) {
       <?php endforeach; ?>
       <?php $i++; ?>
     </table>
+    <a href="create.php">ingin menambahkan data anda?</a>
 
     <div class="logout-link">
       <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">

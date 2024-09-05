@@ -3,9 +3,9 @@
 require "functions.php";
 
 
-$nis = $_GET["nis"];
+$id = $_GET["id"];
 
-if (delete($nis) > 0) {
+if (delete($id) > 0) {
     echo "<script>
     alert('Nis Sudah dihapus');
     document.location.href = 'index.php';

@@ -45,9 +45,9 @@ $result = mysqli_query($conn, $query);
 
 return mysqli_affected_rows($conn);
 } 
-function delete($nis) {
+function delete($id) {
   global $conn;
-  $q2 = "DELETE FROM siswa WHERE nis = '$nis'";
+  $q2 = "DELETE FROM siswa WHERE nis = '$id'";
   mysqli_query($conn, $q2);
   return mysqli_affected_rows($conn);
 

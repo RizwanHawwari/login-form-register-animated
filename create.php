@@ -1,7 +1,5 @@
 <?php
 require "functions.php";
-
-$siswa = query("SELECT * FROM siswa");
 ?>
 
 <!DOCTYPE html>
@@ -12,30 +10,29 @@ $siswa = query("SELECT * FROM siswa");
     <title>Admin Page</title>
 </head>
 <body>
-    <div class="containers">
-        <table border="1" cellpadding="10" cellspacing="0" >
-            <tr>
-                <th>No</th>
-                <th>Nama</th>
-                <th>Nis</th>
-                <th>Email</th>
-                <th>No Telphone</th>
-                <th>Action</th>
-            </tr>
-            <?php $i = 1; ?>
-            <?php foreach ($siswa as $row) : ?>
-            <tr>
-                <td><?= $i; ?></td>
-                <td><?= $row["nama"];?></td>
-                <td></td>
-                <td><?= $row["email"];?></td>
-                <td><?= $row["no_telp"];?> </td>
-                <td><a href="update.php">Edit</a> | 
-                    <a href="delete.php?id=<?= $row["nis"];?>">Delete</a></td>
-            </tr>
-            <?php $i++; ?>
-            <?php endforeach;?>
-        </table>
+<div class="container">
+    <form action="" method="post">
+      <ul>
+        <li>
+          <label for="nama">Nama: </label>
+          <input type="text" id="nama" name="nama">
+        </li>
+        <li>
+          <label for="nis">NIS: </label>
+          <input type="text" name="nis" id="nis" >
+        </li>
+        <li>
+          <label for="email">Email: </label>
+          <input type="email" name="email" id="email" >
+        </li>
+        <li>
+          <label for="no_telp">No Telp: </label>
+          <input type="tel" name="no_telp" id="no_telp">
+        </li>
+        <button type="submit" name="edit">Edit</button>
+      </ul>
+    </form>
+       
     </div>
 </body>
 </html>

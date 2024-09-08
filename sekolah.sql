@@ -56,7 +56,11 @@ CREATE TABLE `siswa` (
   `email` varchar(255) NOT NULL,
   `no_telp` int(15) NOT NULL,
   PRIMARY KEY (`id`)
+<<<<<<< HEAD
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+=======
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+>>>>>>> backend
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -78,4 +82,8 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
+<<<<<<< HEAD
 -- Dump completed on 2024-09-08 12:04:43
+=======
+-- Dump completed on 2024-09-05 21:38:59
+>>>>>>> backend

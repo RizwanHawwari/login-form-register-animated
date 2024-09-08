@@ -43,7 +43,10 @@ body {
   padding: 20px;
   /* background-image: url(https://www.insightvacations.com/media/ptroy5q0/website-banner-aurora-borealis-or-northern-lights-iceland-166370483.jpg?center=0.5%2C0.5&format=webp&mode=crop&width=1920&height=450&quality=80); */
   background-color: var(--tertiary);
+<<<<<<< HEAD:css-file/anggota.css
   /* background-color: var(--primary); */
+=======
+>>>>>>> backend:css-file/anggo.css
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }

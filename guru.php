@@ -1,7 +1,7 @@
 <?php
 session_start();
 require "functions.php";
-$siswa = query("SELECT * FROM siswa");
+$guru = query("SELECT * FROM guru");
 
 // Check if the user is logged in
 if (!isset($_SESSION['session_username'])) {
@@ -41,32 +41,32 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['logout'])) {
 
   <div class="container">
     <h1>Welcome, <?php echo $username; ?>!</h1>
-    <p>Kamu telah berhasil login dan ini adalah data siswa</p>
+    <p>Kamu telah berhasil login dan ini adalah data Guru</p>
     <table border="1" cellpadding="10" cellspacing="0">
       <tr>
         <th>No</th>
         <th>Aksi</th>
         <th>Nama</th>
-        <th>NIS</th>
         <th>Email</th>
         <th>No Telp</th>
+        <th>Guru Mapel</th>
       </tr>
 
       <?php $i = 1; ?>
-      <?php foreach( $siswa as $s ) : ?>
+      <?php foreach( $guru as $s ) : ?>
       <tr>
         <td><?= $i; ?></td>
-        <td><a class="edit-btn" href="update.php?id=<?= $s["id"]; ?>">Edit </a>or <a class="delete-btn" href="delete.php?id=<?= $s['id']; ?>">Delete</a></td>
+        <td><a class="edit-btn" href="updateGuru.php?id=<?= $s['id']; ?>">Edit </a>or <a class="delete-btn" href="deleteGuru.php?id=<?= $s['id']; ?>">Delete</a></td>
         <td><?= $s["nama"]; ?></td>
-        <td><?= $s["nis"]; ?></td>
         <td><?= $s["email"]; ?></td>
         <td><?= $s["no_telp"]; ?></td>
+        <td><?= $s["guru_mapel"]; ?></td>
       </tr>
       <?php $i++; ?>
       <?php endforeach; ?>
       
     </table>
-    <a class="add-user" href="create.php">Add New User</a>
+    <a class="add-user" href="createGuru.php">Tambah Data Guru</a>
 
     <div class="logout-link">
       <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">

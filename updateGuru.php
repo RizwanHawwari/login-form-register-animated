@@ -1,15 +1,15 @@
 <?php 
 require "functions.php";
 $id = $_GET["id"];
-$siswa = query("SELECT * FROM siswa WHERE id = $id");
+$guru = query("SELECT * FROM guru WHERE id = $id");
 
 if ( isset($_POST["edit"]) ) {
-  if ( edit() > 0 ) {
+  if ( editGuru() > 0 ) {
     echo "<script>
     alert('Data Berhasil Diubah');
     </script>";
 
-    header("Location: anggota.php");
+    header("Location: guru.php");
   } else {
     echo "<script>
     alert('Data Gagal Diubah!');
@@ -31,17 +31,13 @@ if ( isset($_POST["edit"]) ) {
 <body>
   <h1>Edit User Data</h1>
   <div class="container">
-    <?php foreach ( $siswa as $s ) : ?>
+    <?php foreach ( $guru as $s ) : ?>
     <form action="" method="post">
       <ul>
         <input type="hidden" name="id" value="<?= $s["id"]; ?>">
         <li>
-          <label for="nama">Nama: </label>
+          <label for="nama">Nama Guru: </label>
           <input type="text" id="nama" name="nama" value="<?= $s["nama"];?>">
-        </li>
-        <li>
-          <label for="nis">NIS: </label>
-          <input type="text" name="nis" id="nis" value="<?= $s["nis"]; ?>">
         </li>
         <li>
           <label for="email">Email: </label>
@@ -50,6 +46,10 @@ if ( isset($_POST["edit"]) ) {
         <li>
           <label for="no_telp">No Telp: </label>
           <input type="tel" name="no_telp" id="no_telp" value="<?= $s["no_telp"]; ?>">
+        </li>
+        <li>
+          <label for="guru_mapel">Mapel: </label>
+          <input type="text" name="guru_mapel" id="guru_mapel" value="<?= $s["guru_mapel"];?>">
         </li>
         <button type="submit" name="edit">Edit</button>
       </ul>

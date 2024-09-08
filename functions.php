@@ -45,10 +45,50 @@ $result = mysqli_query($conn, $query);
 
 return mysqli_affected_rows($conn);
 } 
+
+function editGuru() {
+    global $conn;
+  
+    $nama = htmlspecialchars($_POST["nama"]);
+    $email = htmlspecialchars($_POST["email"]);
+    $no_telp = htmlspecialchars($_POST["no_telp"]);
+    $guru_mapel = htmlspecialchars($_POST["guru_mapel"]);
+  
+    $q1 = "SELECT nama FROM guru WHERE nama = '$nama'";
+    $r1 = mysqli_query($conn, $q1);
+    if ( mysqli_fetch_assoc($r1) ) {
+      echo "<script>
+      alert('Nama Sudah Terdaftar');
+      </script>";
+      return false;
+    }
+
+  $id = $_POST["id"];
+  
+  $query = "UPDATE guru SET
+  nama = '$nama',
+  email = '$email',
+  no_telp = $no_telp,
+  guru_mapel = '$guru_mapel'
+  WHERE id = $id";
+$result = mysqli_query($conn, $query);
+
+return mysqli_affected_rows($conn);
+} 
+
 function delete() {
   global $conn;
   $id = $_GET["id"];
   $q2 = "DELETE FROM siswa WHERE id = '$id'";
+  mysqli_query($conn, $q2);
+  return mysqli_affected_rows($conn);
+
+}
+
+function deleteGuru() {
+  global $conn;
+  $id = $_GET["id"];
+  $q2 = "DELETE FROM guru WHERE id = '$id'";
   mysqli_query($conn, $q2);
   return mysqli_affected_rows($conn);
 
@@ -70,6 +110,27 @@ function create() {
     }  
     $q2 = "INSERT INTO siswa VALUES (
     '', '$nama', $nis, '$email', $no_telp)";
+
+    $r2 = mysqli_query($conn, $q2);
+    return mysqli_affected_rows($conn);
+}
+
+function createGuru() {
+  global $conn;
+  $nama = htmlspecialchars($_POST["nama"]);
+  $email = htmlspecialchars($_POST["email"]);
+  $no_telp = htmlspecialchars($_POST["no_telp"]);
+  $guru_mapel = htmlspecialchars($_POST["guru_mapel"]);
+   $q1 = "SELECT nama FROM guru WHERE nama = '$nama'";
+  $r1 = mysqli_query($conn, $q1);
+  if ( mysqli_fetch_assoc($r1) ) {
+    echo "<script>
+    alert('Nama Sudah Terdaftar');
+    </script>";
+      return false;
+    }  
+    $q2 = "INSERT INTO guru VALUES (
+    '', '$nama', '$email', $no_telp, '$guru_mapel')";
 
     $r2 = mysqli_query($conn, $q2);
     return mysqli_affected_rows($conn);

@@ -2,16 +2,15 @@
 
 require "functions.php";
 
-
-if (delete() > 0) {
+if (deleteGuru() > 0) {
     echo "<script>
     alert('Data Sudah Dihapus');
-    document.location.href = 'anggota.php';
+    document.location.href = 'guru.php';
     </script>";
 } else {
     echo "<script>
     alert('Data Gagal Dihapus');
-    document.location.href = 'anggota.php';
+    document.location.href = 'guru.php';
     </script>";
 }
 

@@ -3,7 +3,8 @@
 :root {
   --primary: #043d3d;
   --secondary: #5ff094;
-  --tertiary: #1E201E;
+  --tertiary: #1e201e;
+  --fourth: maroon;
 }
 * {
   margin: 0;

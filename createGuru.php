@@ -2,8 +2,8 @@
 require "functions.php";
 if (isset($_POST["submit"])) {
 
- if (create() > 0) {
-    header("Location: anggota.php");
+ if (createGuru() > 0) {
+    header("Location: guru.php");
  } else { 
     echo "<script>
     alert('Data Gagal Ditambahkan');
@@ -22,7 +22,7 @@ if (isset($_POST["submit"])) {
     <title>Admin Page</title>
 </head>
 <body>
-  <h1>Add New User</h1>
+  <h1>Tambah Data Guru</h1>
     <form action="" method="post" autocomplete="off">
       <ul>
         <li>
@@ -30,16 +30,16 @@ if (isset($_POST["submit"])) {
           <input type="text" id="nama" name="nama" required>
         </li>
         <li>
-          <label for="nis">NIS: </label>
-          <input type="text" name="nis" id="nis"required>
-        </li>
-        <li>
           <label for="email">Email: </label>
-          <input type="email" name="email" id="email"required >
+          <input type="email" name="email" id="email"required>
         </li>
         <li>
-          <label for="no_telp">No Telp: </label>
-          <input type="tel" name="no_telp" id="no_telp"required>
+          <label for="no_telp">no_telp: </label>
+          <input type="tel" name="no_telp" id="no_telp"required >
+        </li>
+        <li>
+          <label for="guru_mapel">Guru Mapel: </label>
+          <input type="tel" name="guru_mapel" id="guru_mapel"required>
         </li>
         <button type="submit" name="submit">submit</button>
       </ul>

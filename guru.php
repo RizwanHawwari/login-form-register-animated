@@ -31,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['logout'])) {
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Member's Page</title>
-  <link rel="stylesheet" href="css-file/anggota.css">
+  <link rel="stylesheet" href="css-file/anggo.css">
 </head>
 
 <body>

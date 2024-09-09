@@ -76,6 +76,32 @@ $result = mysqli_query($conn, $query);
 return mysqli_affected_rows($conn);
 } 
 
+function editMapelGuru() {
+  global $conn;
+
+  $kode = htmlspecialchars($_POST["kode"]);
+  $nama = htmlspecialchars($_POST["nama"]);
+
+  $q1 = "SELECT nama FROM mapel WHERE nama = '$nama'";
+  $r1 = mysqli_query($conn, $q1);
+  if ( mysqli_fetch_assoc($r1) ) {
+    echo "<script>
+    alert('Nama Sudah Terdaftar');
+    </script>";
+    return false;
+  }
+
+$id = $_POST["id"];
+
+$query = "UPDATE mapel SET
+kode = '$kode',
+nama = '$nama'
+WHERE id = $id";
+$result = mysqli_query($conn, $query);
+
+return mysqli_affected_rows($conn);
+} 
+
 function delete() {
   global $conn;
   $id = $_GET["id"];
@@ -89,6 +115,15 @@ function deleteGuru() {
   global $conn;
   $id = $_GET["id"];
   $q2 = "DELETE FROM guru WHERE id = '$id'";
+  mysqli_query($conn, $q2);
+  return mysqli_affected_rows($conn);
+
+}
+
+function deleteMapel() {
+  global $conn;
+  $id = $_GET["id"];
+  $q2 = "DELETE FROM mapel WHERE id = '$id'";
   mysqli_query($conn, $q2);
   return mysqli_affected_rows($conn);
 
@@ -131,6 +166,25 @@ function createGuru() {
     }  
     $q2 = "INSERT INTO guru VALUES (
     '', '$nama', '$email', $no_telp, '$guru_mapel')";
+
+    $r2 = mysqli_query($conn, $q2);
+    return mysqli_affected_rows($conn);
+}
+
+function createMapel() {
+  global $conn;
+  $kode = htmlspecialchars($_POST["kode"]);
+  $nama = htmlspecialchars($_POST["nama"]);
+   $q1 = "SELECT nama FROM mapel WHERE nama = '$nama'";
+  $r1 = mysqli_query($conn, $q1);
+  if ( mysqli_fetch_assoc($r1) ) {
+    echo "<script>
+    alert('Nama Sudah Terdaftar');
+    </script>";
+      return false;
+    }  
+    $q2 = "INSERT INTO mapel VALUES (
+    '', $kode, '$nama')";
 
     $r2 = mysqli_query($conn, $q2);
     return mysqli_affected_rows($conn);

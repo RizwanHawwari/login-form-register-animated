@@ -1,172 +1,169 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;400;600&display=swap");
 
 :root {
-  --primary: #043d3d;
-  --secondary: #5ff094;
+  --primary: #6C48C5; /* Smooth Lavender */
+  --secondary: #F3E5F5; /* Creamy Lilac */
+  --highlight: #F8F6FF; /* Light Lavender */
+  --error-bg: #FDECEC;
+  --error-text: #B85C5C;
+  --login-bg: rgba(255, 255, 255, 0.9); /* 90% transparan */
+  --login-blur: blur(10px); /* efek blur */
 }
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
 }
+
 body {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background: var(--primary);
+  background-color: var(--primary);
+  animation: backgroundShift 10s ease-in-out infinite;
+  margin: 0;
 }
+
+@keyframes backgroundShift {
+  0% { background-color: #F7EFE5; }
+  33% { background-color: #E2BFD9; }
+  66% { background-color: #C8A1E0; }
+  100% { background-color: #F7EFE5; }
+}
+
 #error-message {
-  margin: auto;
-  background-color: #f8d7da;
-  color: #721c24;
-  border: 1px solid #f5c6cb;
+  background-color: var(--error-bg);
+  color: var(--error-text);
+  border: 1px solid var(--error-text);
   border-radius: 5px;
   padding: 10px;
   margin-bottom: 20px;
   font-size: 1em;
-  list-style-type: none;
-  width: 280px;
-  /* transition: 3s; */
-}
-#error-message ul {
-  margin: 0;
-  padding: 0;
-}
-#error-message li {
-  list-style-type: none;
-  text-align: center;
-  /* margin-bottom: 10px; */
-}
-.container {
-  position: relative;
-  width: 256px;
-  height: 256px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.container span {
-  position: absolute;
-  left: 0;
-  width: 18px;
-  height: 6px;
-  background: #358f80;
-  border-radius: 24px;
-  transform-origin: 128px;
-  transform: scale(2.5) rotate(calc(var(--i) * (360deg / 50)));
-  animation: kelapKelip 3s linear infinite;
-  animation-delay: calc(var(--i) * (3s / 50));
-}
-@keyframes kelapKelip {
-  0% {
-    background: var(--secondary);
-  }
-
-  25% {
-    background: var(--primary);
-  }
-  /* 
-  50% {
-    background: crimson;
-  } */
-}
-.login-box {
-  position: absolute;
-  width: 400px;
-}
-.login-box form {
   width: 100%;
-  padding: 0 50px;
-}
-h2 {
-  font-size: 2em;
-  color: var(--secondary);
   text-align: center;
 }
+
+.container {
+  width: 100%;
+  max-width: 400px; /* menyesuaikan ruangan */
+  margin: 0 auto;
+  text-align: center; /* biar si content nya di tengah */
+}
+
+.img {
+  margin-bottom: 20px; 
+}
+
+.img img {
+  display: block;
+  margin: 0 auto; /* biar di tengah */
+}
+
+.login-box {
+  position: relative;
+  background: var(--login-bg);
+  backdrop-filter: var(--login-blur);
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); 
+}
+
+h2 {
+  font-size: 2.2em;
+  color: var(--primary);
+  text-align: center;
+  margin-bottom: 25px;
+}
+
 .input-box {
   position: relative;
-  margin: 25px 0;
+  margin-bottom: 20px;
 }
+
 .input-box input {
   width: 100%;
   height: 50px;
   background: transparent;
-  border: 2px solid #358f80;
+  border: 2px solid var(--primary);
   font-size: 1em;
-  color: #fff;
+  color: #000;
   padding: 0 20px;
   outline: none;
-  border-radius: 40px;
+  border-radius: 10px; 
   transition: 0.5s ease;
 }
+
 .input-box input:focus,
 .input-box input:valid {
-  border-color: var(--secondary);
+  border-color: var(--primary);
 }
+
 .input-box label {
   position: absolute;
   top: 50%;
   left: 20px;
   transform: translateY(-50%);
   font-size: 1em;
-  color: #fff;
+  color: #666;
   pointer-events: none;
   transition: 0.5s ease;
 }
+
 .input-box input:focus ~ label,
 .input-box input:valid ~ label {
   top: 1px;
-  font-size: 0.8em;
-  padding: 0 6px;
-  background-color: var(--primary);
-  color: var(--secondary);
+  font-size: 0.75em;
+  background-color: var(--highlight);
+  padding: 0 5px;
+  color: var(--primary);
+  border-radius: 5px;
 }
-.input-box {
-  position: relative;
-  margin: 25px 0;
+
+.remember-box {
   display: flex;
   align-items: center;
+  margin-bottom: 20px;
 }
-.input-box input[type="checkbox"] {
-  width: auto;
-  height: auto;
+
+.remember-box input {
   margin-right: 10px;
-  accent-color: var(--secondary); /* Ubah warna ceklis sesuai kebutuhan */
+  width: 20px; 
+  height: 20px;
 }
-.input-box .remember {
-  position: static; /* Atur posisi label */
-  top: auto;
-  left: auto;
-  transform: none;
-  font-size: 0.9em; /* Ukuran font label */
-  color: #fff;
-  cursor: pointer;
-}
+
 .btn {
   width: 100%;
-  height: 45px;
-  background: var(--secondary);
+  height: 50px; 
+  background: #C8A1E0;
   border: none;
-  outline: none;
-  border-radius: 40px;
-  cursor: pointer;
+  border-radius: 10px; 
   font-size: 1em;
-  color: var(--primary);
+  color: #fff;
+  cursor: pointer;
   font-weight: 600;
+  transition: background 0.3s ease-in-out;
 }
+
+.btn:hover {
+  background: #ac58e0;
+}
+
 .signup-link {
-  margin: 20px 0 10px;
   text-align: center;
 }
+
 .signup-link a {
-  font-size: 1em;
-  color: var(--secondary);
-  text-decoration: none;
+  display: inline-block;
+  padding-top: 10px;
   font-weight: 600;
-  transition: 0.3s;
+  text-decoration: none;
+  color: var(--primary);
 }
+
 .signup-link a:hover {
   text-decoration: underline;
 }

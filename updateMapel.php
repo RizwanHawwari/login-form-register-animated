@@ -32,7 +32,7 @@ if ( isset($_POST["edit"]) ) {
   <h1>Edit User Data</h1>
   <div class="container">
     <?php foreach ( $mapel as $s ) : ?>
-    <form action="" method="post">
+    <form action="" method="post" autocomplete="off">
       <ul>
         <input type="hidden" name="id" value="<?= $s["id"]; ?>">
         <li>

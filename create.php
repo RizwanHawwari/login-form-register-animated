@@ -17,25 +17,19 @@ if (isset($_POST["submit"])) {
 <html lang="en">
 
 <head>
-<<<<<<< HEAD
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="css-file/create.css">
   <title>Admin Page</title>
-=======
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css-file/create.css">
-    <title>Admin Page</title>
->>>>>>> backend
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css-file/create.css">
+  <title>Admin Page</title>
 </head>
 
 <body>
-<<<<<<< HEAD
   <div class="container">
-=======
-  <h1>Add New User</h1>
->>>>>>> backend
+    <h1>Add New User</h1>
     <form action="" method="post" autocomplete="off">
       <ul>
         <li>
@@ -52,7 +46,8 @@ if (isset($_POST["submit"])) {
         </li>
         <li>
           <label for="no_telp">No Telp: </label>
-          <input type="tel" name="no_telp" id="no_telp" required>
+          <input type="tel" name="no_telp" id="no_telp" pattern="^\0(895|896|897|898|899|856|857|858|859)[0-9]{6,10}$"
+            required>
         </li>
         <button type="submit" name="submit">submit</button>
       </ul>

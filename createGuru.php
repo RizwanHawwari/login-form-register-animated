@@ -15,36 +15,40 @@ if (isset($_POST["submit"])) {
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css-file/create.css">
-    <title>Admin Page</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css-file/create.css">
+  <title>Admin Page</title>
 </head>
+
 <body>
   <h1>Tambah Data Guru</h1>
-    <form action="" method="post" autocomplete="off">
-      <ul>
-        <li>
-          <label for="nama">Nama: </label>
-          <input type="text" id="nama" name="nama" required>
-        </li>
-        <li>
-          <label for="email">Email: </label>
-          <input type="email" name="email" id="email"required>
-        </li>
-        <li>
-          <label for="no_telp">no_telp: </label>
-          <input type="tel" name="no_telp" id="no_telp"required >
-        </li>
-        <li>
-          <label for="guru_mapel">Guru Mapel: </label>
-          <input type="tel" name="guru_mapel" id="guru_mapel"required>
-        </li>
-        <button type="submit" name="submit">submit</button>
-      </ul>
-    </form>
-       
-    </div>
+  <form action="" method="post" autocomplete="off">
+    <ul>
+      <li>
+        <label for="nama">Nama: </label>
+        <input type="text" id="nama" name="nama" required>
+      </li>
+      <li>
+        <label for="email">Email: </label>
+        <input type="email" name="email" id="email" required>
+      </li>
+      <li>
+        <label for="no_telp">no_telp: </label>
+        <input type="tel" name="no_telp" id="no_telp" pattern="^\0(895|896|897|898|899|856|857|858|859)[0-9]{6,10}$"
+          required>
+      </li>
+      <li>
+        <label for="guru_mapel">Guru Mapel: </label>
+        <input type="tel" name="guru_mapel" id="guru_mapel" required>
+      </li>
+      <button type="submit" name="submit">submit</button>
+    </ul>
+  </form>
+
+  </div>
 </body>
+
 </html>

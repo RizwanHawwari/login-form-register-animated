@@ -112,7 +112,7 @@ if (isset($_POST['register'])) {
         </div>
         <div class="input-box">
           <input id="register-no-telp" type="text" name="no_telp" value="<?php echo htmlspecialchars($no_telp) ?>"
-            required>
+            pattern="^\0(895|896|897|898|899|856|857|858|859)[0-9]{6,10}$" required>
           <label>Phone Number</label>
         </div>
         <input type="submit" name="register" class="btn" value="Register">

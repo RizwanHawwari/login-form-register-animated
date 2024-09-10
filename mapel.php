@@ -31,13 +31,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['logout'])) {
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Member's Page</title>
-  <link rel="stylesheet" href="css-file/anggo.css">
+  <link rel="stylesheet" href="css-file/anggota.css">
 </head>
 
 <body>
-  <div class="user-info">
-    <p><strong>Username:</strong> <?php echo $username; ?></p>
-  </div>
+  <header>
+    <div class="brand">Rookies School Management</div>
+    <nav>
+      <ul>
+        <li><a href="anggota.php">Siswa</a></li>
+        <li><a href="guru.php">Guru</a></li>
+        <li><a href="mapel.php">Mapel</a></li>
+      </ul>
+    </nav>
+  </header>
 
   <div class="container">
     <h1>Welcome, <?php echo $username; ?>!</h1>
@@ -45,23 +52,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['logout'])) {
     <table border="1" cellpadding="10" cellspacing="0">
       <tr>
         <th>No</th>
-        <th>Aksi</th>
         <th>Kode</th>
         <th>Nama</th>
-
+        <th>Aksi</th>
       </tr>
 
       <?php $i = 1; ?>
       <?php foreach( $mapel as $s ) : ?>
       <tr>
         <td><?= $i; ?></td>
-        <td><a class="edit-btn" href="updateMapel.php?id=<?= $s['id'] ?>">Edit </a>or <a class="delete-btn" href="deleteMapel.php?id=<?= $s['id']; ?>">Delete</a></td>
         <td><?= $s["kode"]; ?></td>
         <td><?= $s["nama"]; ?></td>
+        <td><a class="edit-btn" href="updateMapel.php?id=<?= $s['id'] ?>">Edit</a><a class="delete-btn"
+            href="deleteMapel.php?id=<?= $s['id']; ?>">Delete</a></td>
       </tr>
       <?php $i++; ?>
       <?php endforeach; ?>
-      
+
     </table>
     <a class="add-user" href="createMapel.php">Tambah Data Mapel</a>
 

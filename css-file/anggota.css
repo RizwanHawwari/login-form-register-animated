@@ -117,17 +117,17 @@ table {
   margin-top: 20px;
   /* margin-top: 100px; */
 }
-.user-info {
+/* .user-info {
   position: absolute;
   top: 30px;
   right: 40px;
-}
-.user-info p {
+} */
+/* .user-info p {
   border: 1px solid #fff;
   border-radius: 12px;
   padding: 6px;
   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
-}
+} */
 .container table th,
 .container table td {
   padding: 18px;

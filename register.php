@@ -80,11 +80,14 @@ if (isset($_POST['register'])) {
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Register</title>
-  <link rel="stylesheet" href="css-file/regis.css">
+  <link rel="stylesheet" href="css-file/register.css">
 </head>
 
 <body>
   <div class="container">
+    <div class="logo-cn">
+      <img src="img/logo-cn.png" alt="logo-cn" width="60px">
+    </div>
     <div class="login-box">
       <h2>Create An Account</h2>
       <?php if ($err) { ?>

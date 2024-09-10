@@ -7,7 +7,6 @@
   --error-bg: #fdecec;
   --error-text: #b85c5c;
 }
-
 * {
   margin: 0;
   padding: 0;
@@ -46,10 +45,14 @@ body {
 .container {
   position: relative;
   width: 256px;
-  height: 256px;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.logo-cn {
+  position: fixed;
+  top: 20px;
 }
 .container span {
   position: absolute;

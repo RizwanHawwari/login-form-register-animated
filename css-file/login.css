@@ -1,12 +1,8 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
 :root {
-  --primary: #6C48C5; /* Smooth Lavender */
-  --secondary: #F3E5F5; /* Creamy Lilac */
-  --highlight: #F8F6FF; /* Creamy Lilac V2 */
-  --error-bg: #FDECEC;
-  --error-text: #B85C5C;
-  --login-bg: rgba(255, 255, 255, 0.9); /* 90% transparan */
-  --login-blur: blur(10px); /* menambahkan efek blur */
+  --primary: #043d3d;
+  --secondary: #5ff094;
 }
 * {
   margin: 0;
@@ -19,34 +15,20 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background-color: var(--primary);
-  animation: backgroundShift 10s ease-in-out infinite;
-}
-@keyframes backgroundShift {
-  0% {
-    background-color: #F7EFE5;
-  }
-  33% {
-    background-color: #E2BFD9;
-  }
-  66% {
-    background-color: #C8A1E0;
-  }
-  100% {
-    background-color: #F7EFE5;
-  }
+  background: var(--primary);
 }
 #error-message {
   margin: auto;
-  background-color: var(--error-bg);
-  color: var(--error-text);
-  border: 1px solid var(--error-text);
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
   border-radius: 5px;
   padding: 10px;
   margin-bottom: 20px;
   font-size: 1em;
   list-style-type: none;
   width: 280px;
+  /* transition: 3s; */
 }
 #error-message ul {
   margin: 0;
@@ -55,19 +37,52 @@ body {
 #error-message li {
   list-style-type: none;
   text-align: center;
+  /* margin-bottom: 10px; */
+}
+.container {
+  position: relative;
+  width: 256px;
+  height: 256px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.container span {
+  position: absolute;
+  left: 0;
+  width: 18px;
+  height: 6px;
+  background: #358f80;
+  border-radius: 24px;
+  transform-origin: 128px;
+  transform: scale(2.5) rotate(calc(var(--i) * (360deg / 50)));
+  animation: kelapKelip 3s linear infinite;
+  animation-delay: calc(var(--i) * (3s / 50));
+}
+@keyframes kelapKelip {
+  0% {
+    background: var(--secondary);
+  }
+
+  25% {
+    background: var(--primary);
+  }
+  /* 
+  50% {
+    background: crimson;
+  } */
 }
 .login-box {
-  position: relative;
+  position: absolute;
   width: 400px;
-  background: var(--login-bg);
-  backdrop-filter: var(--login-blur);
-  padding: 30px;
-  border-radius: 10px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+.login-box form {
+  width: 100%;
+  padding: 0 50px;
 }
 h2 {
   font-size: 2em;
-  color: var(--primary);
+  color: var(--secondary);
   text-align: center;
 }
 .input-box {
@@ -78,9 +93,9 @@ h2 {
   width: 100%;
   height: 50px;
   background: transparent;
-  border: 2px solid var(--primary);
+  border: 2px solid #358f80;
   font-size: 1em;
-  color: #000000;
+  color: #fff;
   padding: 0 20px;
   outline: none;
   border-radius: 40px;
@@ -88,7 +103,7 @@ h2 {
 }
 .input-box input:focus,
 .input-box input:valid {
-  border-color: var(--primary);
+  border-color: var(--secondary);
 }
 .input-box label {
   position: absolute;
@@ -96,40 +111,50 @@ h2 {
   left: 20px;
   transform: translateY(-50%);
   font-size: 1em;
-  color: #000000;
+  color: #fff;
   pointer-events: none;
   transition: 0.5s ease;
 }
 .input-box input:focus ~ label,
 .input-box input:valid ~ label {
-  top: 1px; /* mindahin placeholder ke atas */
+  top: 1px;
   font-size: 0.8em;
   padding: 0 6px;
-  background-color: var(--highlight);
-  color: var(--primary);
+  background-color: var(--primary);
+  color: var(--secondary);
+}
+.input-box {
+  position: relative;
+  margin: 25px 0;
+  display: flex;
+  align-items: center;
 }
 .input-box input[type="checkbox"] {
   width: auto;
   height: auto;
   margin-right: 10px;
-  accent-color: var(--secondary);
+  accent-color: var(--secondary); /* Ubah warna ceklis sesuai kebutuhan */
+}
+.input-box .remember {
+  position: static; /* Atur posisi label */
+  top: auto;
+  left: auto;
+  transform: none;
+  font-size: 0.9em; /* Ukuran font label */
+  color: #fff;
+  cursor: pointer;
 }
 .btn {
   width: 100%;
   height: 45px;
-  background: #C8A1E0;
+  background: var(--secondary);
   border: none;
   outline: none;
   border-radius: 40px;
   cursor: pointer;
   font-size: 1em;
-  color: #ffffff;
-  font-weight: 500;
-}
-.btn:hover {
-  background-color: #ac58e0;
-  color: var(--secondary);
-  transition: background 0.2s ease-in-out;
+  color: var(--primary);
+  font-weight: 600;
 }
 .signup-link {
   margin: 20px 0 10px;
@@ -137,7 +162,7 @@ h2 {
 }
 .signup-link a {
   font-size: 1em;
-  color: var(--primary);
+  color: var(--secondary);
   text-decoration: none;
   font-weight: 600;
   transition: 0.3s;

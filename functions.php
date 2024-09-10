@@ -39,7 +39,7 @@ function edit() {
   nama = '$nama',
   nis = $nis,
   email = '$email',
-  no_telp = $no_telp
+  no_telp = '$no_telp'
   WHERE id = $id";
 $result = mysqli_query($conn, $query);
 
@@ -68,7 +68,7 @@ function editGuru() {
   $query = "UPDATE guru SET
   nama = '$nama',
   email = '$email',
-  no_telp = $no_telp,
+  no_telp = '$no_telp',
   guru_mapel = '$guru_mapel'
   WHERE id = $id";
 $result = mysqli_query($conn, $query);
@@ -144,7 +144,7 @@ function create() {
       return false;
     }  
     $q2 = "INSERT INTO siswa VALUES (
-    '', '$nama', $nis, '$email', $no_telp)";
+    '', '$nama', $nis, '$email', '$no_telp')";
 
     $r2 = mysqli_query($conn, $q2);
     return mysqli_affected_rows($conn);
@@ -165,7 +165,7 @@ function createGuru() {
       return false;
     }  
     $q2 = "INSERT INTO guru VALUES (
-    '', '$nama', '$email', $no_telp, '$guru_mapel')";
+    '', '$nama', '$email', '$no_telp', '$guru_mapel')";
 
     $r2 = mysqli_query($conn, $q2);
     return mysqli_affected_rows($conn);
@@ -184,7 +184,7 @@ function createMapel() {
       return false;
     }  
     $q2 = "INSERT INTO mapel VALUES (
-    '', $kode, '$nama')";
+    '', '$kode', '$nama')";
 
     $r2 = mysqli_query($conn, $q2);
     return mysqli_affected_rows($conn);

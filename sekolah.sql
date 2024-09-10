@@ -1,8 +1,8 @@
--- MariaDB dump 10.19  Distrib 10.4.28-MariaDB, for Win64 (AMD64)
+-- MariaDB dump 10.19  Distrib 10.4.32-MariaDB, for Win64 (AMD64)
 --
 -- Host: localhost    Database: sekolah
 -- ------------------------------------------------------
--- Server version	10.4.28-MariaDB
+-- Server version	10.4.32-MariaDB
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -25,11 +25,11 @@ DROP TABLE IF EXISTS `guru`;
 CREATE TABLE `guru` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nama` varchar(255) NOT NULL,
-  `nip` int(20) NOT NULL,
   `email` varchar(255) NOT NULL,
-  `no_telp` int(13) NOT NULL,
+  `no_telp` varchar(20) NOT NULL,
+  `guru_mapel` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -38,8 +38,33 @@ CREATE TABLE `guru` (
 
 LOCK TABLES `guru` WRITE;
 /*!40000 ALTER TABLE `guru` DISABLE KEYS */;
-INSERT INTO `guru` VALUES (1,'Sri Yuningsih',123123123,'sriyuningsih@outlook.com',856778122);
+INSERT INTO `guru` VALUES (1,'Sri Yuningsih','sriyuningsih@outlook.com','856778122',''),(2,'Aminah','aminah@gmail.com','+62895611728','PAI'),(3,'qwerty','qwerty@gm.com','+62897564365','btq');
 /*!40000 ALTER TABLE `guru` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `mapel`
+--
+
+DROP TABLE IF EXISTS `mapel`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `mapel` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `kode` varchar(100) NOT NULL,
+  `nama` varchar(100) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `mapel`
+--
+
+LOCK TABLES `mapel` WRITE;
+/*!40000 ALTER TABLE `mapel` DISABLE KEYS */;
+INSERT INTO `mapel` VALUES (1,'K034','PAI');
+/*!40000 ALTER TABLE `mapel` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -54,13 +79,9 @@ CREATE TABLE `siswa` (
   `nama` varchar(255) NOT NULL,
   `nis` int(100) NOT NULL,
   `email` varchar(255) NOT NULL,
-  `no_telp` int(15) NOT NULL,
+  `no_telp` varchar(20) NOT NULL,
   PRIMARY KEY (`id`)
-<<<<<<< HEAD
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-=======
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
->>>>>>> backend
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -69,7 +90,7 @@ CREATE TABLE `siswa` (
 
 LOCK TABLES `siswa` WRITE;
 /*!40000 ALTER TABLE `siswa` DISABLE KEYS */;
-INSERT INTO `siswa` VALUES (1,'Rizwan Ajahh',123123,'rzwnajah@gmail.com',895123123);
+INSERT INTO `siswa` VALUES (1,'Rizwan Ajahh',123123,'rzwnajah@gmail.com','895123123');
 /*!40000 ALTER TABLE `siswa` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -82,8 +103,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
-<<<<<<< HEAD
--- Dump completed on 2024-09-08 12:04:43
-=======
--- Dump completed on 2024-09-05 21:38:59
->>>>>>> backend
+-- Dump completed on 2024-09-10  8:53:45

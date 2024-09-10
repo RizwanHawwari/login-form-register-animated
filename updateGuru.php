@@ -46,7 +46,7 @@ if ( isset($_POST["edit"]) ) {
         <li>
           <label for="no_telp">No Telp: </label>
           <input type="tel" name="no_telp" id="no_telp" value="<?= $s["no_telp"]; ?>"
-            pattern="^\0(895|896|897|898|899|856|857|858|859)[0-9]{6,10}$">
+            pattern="^\+62(895|896|897|898|899|856|857|858|859)[0-9]{6,10}$">
         </li>
         <li>
           <label for="guru_mapel">Mapel: </label>

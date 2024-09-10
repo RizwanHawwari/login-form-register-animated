@@ -117,6 +117,9 @@ if (isset($_POST['register'])) {
         </div>
         <input type="submit" name="register" class="btn" value="Register">
       </form>
+      <div class="login">
+        <a href="login.php">Already have an account?</a>
+      </div>
     </div>
 
     <span style="--i:0;"></span>

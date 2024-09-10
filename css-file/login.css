@@ -1,13 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
 :root {
-    --secondary: #6C48C5; /* Smooth Lavender */
-    --primary: #F3E5F5; /* Creamy Lilac */
-    --third: #F8F6FF; /* Creamy Lilac V2 */
-    --error-bg: #FDECEC;
-    --error-text: #B85C5C;
-    --login-bg: rgba(255, 255, 255, 0.9); /* 90% transparan */
-    --login-blur: blur(10px); /* menambahkan efek blur */
+  --secondary: #424242; /* Smooth Lavender */
+  --primary: #eaeaea; /* Creamy Lilac */
+  --third: #f8f6ff; /* Creamy Lilac V2 */
+  --error-bg: #fdecec;
+  --error-text: #b85c5c;
 }
 
 * {
@@ -99,7 +97,7 @@ h2 {
   width: 100%;
   height: 50px;
   background: transparent;
-  border: 2px solid #358f80;
+  border: 2px solid var(--secondary);
   font-size: 1em;
   color: var(--secondary);
   padding: 0 20px;

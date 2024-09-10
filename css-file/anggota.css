@@ -74,9 +74,13 @@ header ul li a:hover {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   margin: 150px auto;
 }
-h1 {
-  color: var(--secondary);
+.container .welcome {
+  background-color: var(--secondary);
+  color: var(--primary);
   font-size: 2.5em;
+  padding: 5px 20px;
+  border-radius: 12px;
+  margin: 20px 0;
 }
 .content {
   display: flex;

@@ -50,7 +50,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['logout'])) {
   </div> -->
 
   <div class="container">
-    <h1>Welcome, <?php echo $username; ?>!</h1>
+    <h1 class="welcome">Welcome, <?php echo $username; ?>!</h1>
     <p>Kamu telah berhasil login dan ini adalah data Guru</p>
     <table border="1" cellpadding="10" cellspacing="0">
       <tr>

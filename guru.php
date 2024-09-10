@@ -35,9 +35,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['logout'])) {
 </head>
 
 <body>
-  <div class="user-info">
-    <p><strong>Username:</strong> <?php echo $username; ?></p>
-  </div>
+  <header>
+    <div class="brand">Rookies School Management</div>
+    <nav>
+      <ul>
+        <li><a href="anggota.php">Siswa</a></li>
+        <li><a href="guru.php">Guru</a></li>
+        <li><a href="mapel.php">Mapel</a></li>
+      </ul>
+    </nav>
+  </header>
+  <!-- <div class="user-info">
+    <p><strong>Username:</strong></p>
+  </div> -->
 
   <div class="container">
     <h1>Welcome, <?php echo $username; ?>!</h1>
@@ -45,23 +55,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['logout'])) {
     <table border="1" cellpadding="10" cellspacing="0">
       <tr>
         <th>No</th>
-        <th>Aksi</th>
         <th>Nama</th>
         <th>Email</th>
         <th>No Telp</th>
         <th>Guru Mapel</th>
+        <th>Aksi</th>
       </tr>
 
       <?php $i = 1; ?>
       <?php foreach( $guru as $s ) : ?>
       <tr>
         <td><?= $i; ?></td>
-        <td><a class="edit-btn" href="updateGuru.php?id=<?= $s['id']; ?>">Edit </a>or <a class="delete-btn"
-            href="deleteGuru.php?id=<?= $s['id']; ?>">Delete</a></td>
         <td><?= $s["nama"]; ?></td>
         <td><?= $s["email"]; ?></td>
         <td><?= $s["no_telp"]; ?></td>
         <td><?= $s["guru_mapel"]; ?></td>
+        <td><a class="edit-btn" href="updateGuru.php?id=<?= $s['id']; ?>">Edit</a><a class="delete-btn"
+            href="deleteGuru.php?id=<?= $s['id']; ?>">Delete</a></td>
       </tr>
       <?php $i++; ?>
       <?php endforeach; ?>

@@ -31,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['logout'])) {
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Member's Page</title>
-  <link rel="stylesheet" href="css-file/anggo.css">
+  <link rel="stylesheet" href="css-file/anggota.css">
 </head>
 
 <body>
@@ -56,7 +56,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['logout'])) {
       <?php foreach( $guru as $s ) : ?>
       <tr>
         <td><?= $i; ?></td>
-        <td><a class="edit-btn" href="updateGuru.php?id=<?= $s['id']; ?>">Edit </a>or <a class="delete-btn" href="deleteGuru.php?id=<?= $s['id']; ?>">Delete</a></td>
+        <td><a class="edit-btn" href="updateGuru.php?id=<?= $s['id']; ?>">Edit </a>or <a class="delete-btn"
+            href="deleteGuru.php?id=<?= $s['id']; ?>">Delete</a></td>
         <td><?= $s["nama"]; ?></td>
         <td><?= $s["email"]; ?></td>
         <td><?= $s["no_telp"]; ?></td>
@@ -64,7 +65,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['logout'])) {
       </tr>
       <?php $i++; ?>
       <?php endforeach; ?>
-      
+
     </table>
     <a class="add-user" href="createGuru.php">Tambah Data Guru</a>
 

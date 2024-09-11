@@ -97,31 +97,32 @@ if (isset($_POST['register'])) {
       <?php } ?>
       <form id="registerform" action="" method="post" role="form" autocomplete="off">
         <div class="input-box">
-          <input id="register-username" type="text" name="username" value="<?php echo htmlspecialchars($username) ?>"
-            required>
+          <input id="register-username" type="text" name="username" placeholder=" "
+            value="<?php echo htmlspecialchars($username) ?>" required>
           <label>Username</label>
         </div>
         <div class="input-box">
-          <input id="register-password" type="password" name="password" required>
+          <input id="register-password" type="password" name="password" placeholder=" " required>
           <label>Password</label>
         </div>
         <div class="input-box">
-          <input id="register-konfirmasi-password" type="password" name="konfirmasi_password" required>
+          <input id="register-konfirmasi-password" type="password" name="konfirmasi_password" placeholder=" " required>
           <label>Confirm Password</label>
         </div>
         <div class="input-box">
-          <input id="register-email" type="text" name="email" value="<?php echo htmlspecialchars($email) ?>" required>
+          <input id="register-email" type="text" name="email" placeholder=" "
+            value="<?php echo htmlspecialchars($email) ?>" required>
           <label>Email</label>
         </div>
         <div class="input-box">
           <input id="register-no-telp" type="text" name="no_telp" value="<?php echo htmlspecialchars($no_telp) ?>"
-            pattern="^\+62(895|896|897|898|899|856|857|858|859)[0-9]{6,10}$" required>
+            placeholder=" " pattern="^\+62(895|896|897|898|899|856|857|858|859)[0-9]{6,10}$" required>
           <label>Phone Number</label>
         </div>
         <input type="submit" name="register" class="btn" value="Register">
       </form>
       <div class="login">
-        <a href="login.php">Already have an account?</a>
+        <a href="login.php">Log In</a>
       </div>
     </div>
 

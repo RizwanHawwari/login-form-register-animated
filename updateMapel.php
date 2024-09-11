@@ -29,7 +29,7 @@ if ( isset($_POST["edit"]) ) {
 </head>
 
 <body>
-  <h1>Edit User Data</h1>
+  <h1>Ubah Data Mapel</h1>
   <div class="container">
     <?php foreach ( $mapel as $s ) : ?>
     <form action="" method="post" autocomplete="off">

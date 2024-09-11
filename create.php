@@ -29,7 +29,7 @@ if (isset($_POST["submit"])) {
 
 <body>
   <div class="container">
-    <h1>Add New User</h1>
+    <h1>Tambah Data Siswa</h1>
     <form action="" method="post" autocomplete="off">
       <ul>
         <li>
@@ -49,7 +49,7 @@ if (isset($_POST["submit"])) {
           <input type="tel" name="no_telp" id="no_telp" pattern="^\+62(895|896|897|898|899|856|857|858|859)[0-9]{6,10}$"
             required>
         </li>
-        <button type="submit" name="submit">submit</button>
+        <button type="submit" name="submit">Tambah</button>
       </ul>
     </form>
 

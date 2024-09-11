@@ -29,7 +29,7 @@ if ( isset($_POST["edit"]) ) {
 </head>
 
 <body>
-  <h1>Edit User Data</h1>
+  <h1>Ubah Nama Guru</h1>
   <div class="container">
     <?php foreach ( $guru as $s ) : ?>
     <form action="" method="post">
@@ -44,7 +44,7 @@ if ( isset($_POST["edit"]) ) {
           <input type="email" name="email" id="email" value="<?= $s["email"]; ?>">
         </li>
         <li>
-          <label for="no_telp">No Telp: </label>
+          <label for="no_telp">Nomor Telepon: </label>
           <input type="tel" name="no_telp" id="no_telp" value="<?= $s["no_telp"]; ?>"
             pattern="^\+62(895|896|897|898|899|856|857|858|859)[0-9]{6,10}$">
         </li>
@@ -52,7 +52,7 @@ if ( isset($_POST["edit"]) ) {
           <label for="guru_mapel">Mapel: </label>
           <input type="text" name="guru_mapel" id="guru_mapel" value="<?= $s["guru_mapel"];?>">
         </li>
-        <button type="submit" name="edit">Edit</button>
+        <button type="submit" name="edit">Ubah</button>
       </ul>
     </form>
     <?php endforeach; ?>

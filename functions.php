@@ -189,4 +189,34 @@ function createMapel() {
     $r2 = mysqli_query($conn, $q2);
     return mysqli_affected_rows($conn);
 }
+
+
+function validatePhoneNumber($no_telp) {
+
+  $kode_operator = [
+      '812', '813', '814', '815', '816', '817', '818', '819',  // Telkomsel
+      '822', '823', '852', '853', '851',                        // Indosat
+      '838', '831', '832', '833', '859',                        // XL
+      '877', '878', '896', '897', '898', '899',                 // Tri
+      '881', '882', '883', '884',                               // Smartfren
+  ];
+
+  $no_telp = preg_replace('/[^\d]/', '', $no_telp);
+
+  if (preg_match('/^62|^08/', $no_telp)) {
+      if (substr($no_telp, 0, 2) == '08') {
+          $no_telp = '62' . substr($no_telp, 1);
+      }
+
+      $kode = substr($no_telp, 2, 3);
+
+      if (in_array($kode, $kode_operator)) {
+          return true;
+      } else {
+          return false;
+      }
+  } else {
+      return false; 
+  }
+}
 ?>

@@ -24,7 +24,6 @@ function edit() {
   $no_telp = htmlspecialchars($_POST["no_telp"]);
   $id = $_POST["id"];
 
-  // Cek apakah email sudah ada untuk user lain
   $q2 = "SELECT email FROM siswa WHERE email = '$email' AND id != '$id'";
   $r2 = mysqli_query($conn, $q2);
   if (mysqli_fetch_assoc($r2)) {
@@ -32,13 +31,11 @@ function edit() {
     return false;
   }
 
-  // Validasi nomor telepon
   if (!validatePhoneNumber($no_telp)) {
     echo "<script>alert('Nomor Telepon Tidak Valid');</script>";
     return false;
 }
 
-  // Cek apakah nomor telepon sudah ada untuk user lain
   $q3 = "SELECT no_telp FROM siswa WHERE no_telp = '$no_telp' AND id != '$id'";
   $r3 = mysqli_query($conn, $q3);
   if (mysqli_fetch_assoc($r3)) {
@@ -46,7 +43,6 @@ function edit() {
     return false;
   }
 
-  // Update data
   $query = "UPDATE siswa SET
   nama = '$nama',
   nis = $nis,
@@ -66,7 +62,6 @@ function editGuru() {
   $guru_mapel = htmlspecialchars($_POST["guru_mapel"]);
   $id = $_POST["id"];
 
-  // Cek apakah email sudah ada untuk guru lain
   $q2 = "SELECT email FROM guru WHERE email = '$email' AND id != '$id'";
   $r2 = mysqli_query($conn, $q2);
   if (mysqli_fetch_assoc($r2)) {
@@ -74,13 +69,11 @@ function editGuru() {
     return false;
   }
 
-  // Validasi nomor telepon
   if (!validatePhoneNumber($no_telp)) {
     echo "<script>alert('Nomor Telepon Tidak Valid');</script>";
     return false;
 }
 
-  // Cek apakah nomor telepon sudah ada untuk guru lain
   $q3 = "SELECT no_telp FROM guru WHERE no_telp = '$no_telp' AND id != '$id'";
   $r3 = mysqli_query($conn, $q3);
   if (mysqli_fetch_assoc($r3)) {
@@ -88,7 +81,6 @@ function editGuru() {
     return false;
   }
 
-  // Update data
   $query = "UPDATE guru SET
   nama = '$nama',
   email = '$email',
@@ -160,7 +152,6 @@ function create() {
   $email = htmlspecialchars($_POST["email"]);
   $no_telp = htmlspecialchars($_POST["no_telp"]);
 
-  // Cek apakah email sudah ada
   $q2 = "SELECT email FROM siswa WHERE email = '$email'";
   $r2 = mysqli_query($conn, $q2);
   if (mysqli_fetch_assoc($r2)) {
@@ -168,13 +159,11 @@ function create() {
     return false;
   }
 
-  // Validasi nomor telepon
   if (!validatePhoneNumber($no_telp)) {
     echo "<script>alert('Nomor Telepon Tidak Valid');</script>";
     return false;
 }
 
-  // Cek apakah nomor telepon sudah ada
   $q3 = "SELECT no_telp FROM siswa WHERE no_telp = '$no_telp'";
   $r3 = mysqli_query($conn, $q3);
   if (mysqli_fetch_assoc($r3)) {
@@ -182,7 +171,6 @@ function create() {
     return false;
   }
 
-  // Jika tidak ada duplikasi, insert data
   $q4 = "INSERT INTO siswa VALUES ('', '$nama', $nis, '$email', '$no_telp')";
   $r4 = mysqli_query($conn, $q4);
   return mysqli_affected_rows($conn);
@@ -195,7 +183,6 @@ function createGuru() {
   $no_telp = htmlspecialchars($_POST["no_telp"]);
   $guru_mapel = htmlspecialchars($_POST["guru_mapel"]);
 
-  // Cek apakah email sudah ada
   $q2 = "SELECT email FROM guru WHERE email = '$email'";
   $r2 = mysqli_query($conn, $q2);
   if (mysqli_fetch_assoc($r2)) {
@@ -203,13 +190,11 @@ function createGuru() {
     return false;
   }
 
-  // Validasi nomor telepon
   if (!validatePhoneNumber($no_telp)) {
     echo "<script>alert('Nomor Telepon Tidak Valid');</script>";
     return false;
 }
 
-  // Cek apakah nomor telepon sudah ada
   $q3 = "SELECT no_telp FROM guru WHERE no_telp = '$no_telp'";
   $r3 = mysqli_query($conn, $q3);
   if (mysqli_fetch_assoc($r3)) {
@@ -217,7 +202,6 @@ function createGuru() {
     return false;
   }
 
-  // Jika tidak ada duplikasi, insert data
   $q4 = "INSERT INTO guru VALUES ('', '$nama', '$email', '$no_telp', '$guru_mapel')";
   $r4 = mysqli_query($conn, $q4);
   return mysqli_affected_rows($conn);

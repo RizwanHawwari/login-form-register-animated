@@ -230,11 +230,13 @@ function createMapel() {
 function validatePhoneNumber($no_telp) {
 
   $kode_operator = [
-      '812', '813', '814', '815', '816', '817', '818', '819',  // Telkomsel
-      '822', '823', '852', '853', '851',                        // Indosat
-      '838', '831', '832', '833', '859',                        // XL
-      '877', '878', '896', '897', '898', '899',                 // Tri
-      '881', '882', '883', '884',                               // Smartfren
+      '852', '853', '811', '812', '813', '821', '822', '851',    // Telkomsel
+      '856', '857',   // Indosat
+      '817', '818', '819', '859', '877', '878',   // XL
+      '896', '895', '897', '898', '899',    // Tri
+      '881', '882', '883', '884', '885', '886', '887', '888', '889',    // Smartfren
+      '813', '832', '833', '838',   // Axis
+      // source: https://kumparan.com/how-to-tekno/daftar-kode-nomor-operator-seluler-di-indonesia-1xTI8XnRtVj/full
   ];
 
   $no_telp = preg_replace('/[^\d]/', '', $no_telp);

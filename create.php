@@ -46,8 +46,7 @@ if (isset($_POST["submit"])) {
         </li>
         <li>
           <label for="no_telp">No Telp: </label>
-          <input type="tel" name="no_telp" id="no_telp" pattern="^\+62(895|896|897|898|899|856|857|858|859)[0-9]{6,10}$"
-            required>
+          <input type="tel" name="no_telp" id="no_telp" required>
         </li>
         <button type="submit" name="submit">Tambah</button>
       </ul>

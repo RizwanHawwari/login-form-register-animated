@@ -49,8 +49,7 @@ if ( isset($_POST["edit"]) ) {
         </li>
         <li>
           <label for="no_telp">No Telp: </label>
-          <input type="tel" name="no_telp" id="no_telp" value="<?= $s["no_telp"]; ?>"
-            pattern="^\+62(895|896|897|898|899|856|857|858|859)[0-9]{6,10}$">
+          <input type="tel" name="no_telp" id="no_telp" value="<?= $s["no_telp"]; ?> ">
         </li>
         <button type="submit" name="edit">Ubah</button>
       </ul>

@@ -32,6 +32,12 @@ function edit() {
     return false;
   }
 
+  // Validasi nomor telepon
+  if (!validatePhoneNumber($no_telp)) {
+    echo "<script>alert('Nomor Telepon Tidak Valid');</script>";
+    return false;
+}
+
   // Cek apakah nomor telepon sudah ada untuk user lain
   $q3 = "SELECT no_telp FROM siswa WHERE no_telp = '$no_telp' AND id != '$id'";
   $r3 = mysqli_query($conn, $q3);
@@ -67,6 +73,12 @@ function editGuru() {
     echo "<script>alert('Email Sudah Terdaftar');</script>";
     return false;
   }
+
+  // Validasi nomor telepon
+  if (!validatePhoneNumber($no_telp)) {
+    echo "<script>alert('Nomor Telepon Tidak Valid');</script>";
+    return false;
+}
 
   // Cek apakah nomor telepon sudah ada untuk guru lain
   $q3 = "SELECT no_telp FROM guru WHERE no_telp = '$no_telp' AND id != '$id'";
@@ -156,6 +168,12 @@ function create() {
     return false;
   }
 
+  // Validasi nomor telepon
+  if (!validatePhoneNumber($no_telp)) {
+    echo "<script>alert('Nomor Telepon Tidak Valid');</script>";
+    return false;
+}
+
   // Cek apakah nomor telepon sudah ada
   $q3 = "SELECT no_telp FROM siswa WHERE no_telp = '$no_telp'";
   $r3 = mysqli_query($conn, $q3);
@@ -184,6 +202,12 @@ function createGuru() {
     echo "<script>alert('Email Sudah Terdaftar');</script>";
     return false;
   }
+
+  // Validasi nomor telepon
+  if (!validatePhoneNumber($no_telp)) {
+    echo "<script>alert('Nomor Telepon Tidak Valid');</script>";
+    return false;
+}
 
   // Cek apakah nomor telepon sudah ada
   $q3 = "SELECT no_telp FROM guru WHERE no_telp = '$no_telp'";

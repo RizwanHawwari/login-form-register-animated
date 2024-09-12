@@ -18,63 +18,75 @@ function query($query) {
 
 function edit() {
   global $conn;
-
   $nama = htmlspecialchars($_POST["nama"]);
   $nis = htmlspecialchars($_POST["nis"]);
   $email = htmlspecialchars($_POST["email"]);
   $no_telp = htmlspecialchars($_POST["no_telp"]);
+  $id = $_POST["id"];
 
-  $q1 = "SELECT nama FROM siswa WHERE nama = '$nama'";
-  $r1 = mysqli_query($conn, $q1);
-  if ( mysqli_fetch_assoc($r1) ) {
-    echo "<script>
-    alert('Nama Sudah Terdaftar');
-    </script>";
+  // Cek apakah email sudah ada untuk user lain
+  $q2 = "SELECT email FROM siswa WHERE email = '$email' AND id != '$id'";
+  $r2 = mysqli_query($conn, $q2);
+  if (mysqli_fetch_assoc($r2)) {
+    echo "<script>alert('Email Sudah Terdaftar');</script>";
     return false;
   }
 
-  $id = $_POST["id"];
-  
+  // Cek apakah nomor telepon sudah ada untuk user lain
+  $q3 = "SELECT no_telp FROM siswa WHERE no_telp = '$no_telp' AND id != '$id'";
+  $r3 = mysqli_query($conn, $q3);
+  if (mysqli_fetch_assoc($r3)) {
+    echo "<script>alert('Nomor Telepon Sudah Terdaftar');</script>";
+    return false;
+  }
+
+  // Update data
   $query = "UPDATE siswa SET
   nama = '$nama',
   nis = $nis,
   email = '$email',
   no_telp = '$no_telp'
   WHERE id = $id";
-$result = mysqli_query($conn, $query);
+  $result = mysqli_query($conn, $query);
 
-return mysqli_affected_rows($conn);
-} 
+  return mysqli_affected_rows($conn);
+}
 
 function editGuru() {
-    global $conn;
-  
-    $nama = htmlspecialchars($_POST["nama"]);
-    $email = htmlspecialchars($_POST["email"]);
-    $no_telp = htmlspecialchars($_POST["no_telp"]);
-    $guru_mapel = htmlspecialchars($_POST["guru_mapel"]);
-  
-    $q1 = "SELECT nama FROM guru WHERE nama = '$nama'";
-    $r1 = mysqli_query($conn, $q1);
-    if ( mysqli_fetch_assoc($r1) ) {
-      echo "<script>
-      alert('Nama Sudah Terdaftar');
-      </script>";
-      return false;
-    }
-
+  global $conn;
+  $nama = htmlspecialchars($_POST["nama"]);
+  $email = htmlspecialchars($_POST["email"]);
+  $no_telp = htmlspecialchars($_POST["no_telp"]);
+  $guru_mapel = htmlspecialchars($_POST["guru_mapel"]);
   $id = $_POST["id"];
-  
+
+  // Cek apakah email sudah ada untuk guru lain
+  $q2 = "SELECT email FROM guru WHERE email = '$email' AND id != '$id'";
+  $r2 = mysqli_query($conn, $q2);
+  if (mysqli_fetch_assoc($r2)) {
+    echo "<script>alert('Email Sudah Terdaftar');</script>";
+    return false;
+  }
+
+  // Cek apakah nomor telepon sudah ada untuk guru lain
+  $q3 = "SELECT no_telp FROM guru WHERE no_telp = '$no_telp' AND id != '$id'";
+  $r3 = mysqli_query($conn, $q3);
+  if (mysqli_fetch_assoc($r3)) {
+    echo "<script>alert('Nomor Telepon Sudah Terdaftar');</script>";
+    return false;
+  }
+
+  // Update data
   $query = "UPDATE guru SET
   nama = '$nama',
   email = '$email',
   no_telp = '$no_telp',
   guru_mapel = '$guru_mapel'
   WHERE id = $id";
-$result = mysqli_query($conn, $query);
+  $result = mysqli_query($conn, $query);
 
-return mysqli_affected_rows($conn);
-} 
+  return mysqli_affected_rows($conn);
+}
 
 function editMapelGuru() {
   global $conn;
@@ -135,19 +147,27 @@ function create() {
   $nis = htmlspecialchars($_POST["nis"]);
   $email = htmlspecialchars($_POST["email"]);
   $no_telp = htmlspecialchars($_POST["no_telp"]);
-   $q1 = "SELECT nama FROM siswa WHERE nama = '$nama'";
-  $r1 = mysqli_query($conn, $q1);
-  if ( mysqli_fetch_assoc($r1) ) {
-    echo "<script>
-    alert('Nama Sudah Terdaftar');
-    </script>";
-      return false;
-    }  
-    $q2 = "INSERT INTO siswa VALUES (
-    '', '$nama', $nis, '$email', '$no_telp')";
 
-    $r2 = mysqli_query($conn, $q2);
-    return mysqli_affected_rows($conn);
+  // Cek apakah email sudah ada
+  $q2 = "SELECT email FROM siswa WHERE email = '$email'";
+  $r2 = mysqli_query($conn, $q2);
+  if (mysqli_fetch_assoc($r2)) {
+    echo "<script>alert('Email Sudah Terdaftar');</script>";
+    return false;
+  }
+
+  // Cek apakah nomor telepon sudah ada
+  $q3 = "SELECT no_telp FROM siswa WHERE no_telp = '$no_telp'";
+  $r3 = mysqli_query($conn, $q3);
+  if (mysqli_fetch_assoc($r3)) {
+    echo "<script>alert('Nomor Telepon Sudah Terdaftar');</script>";
+    return false;
+  }
+
+  // Jika tidak ada duplikasi, insert data
+  $q4 = "INSERT INTO siswa VALUES ('', '$nama', $nis, '$email', '$no_telp')";
+  $r4 = mysqli_query($conn, $q4);
+  return mysqli_affected_rows($conn);
 }
 
 function createGuru() {
@@ -156,19 +176,27 @@ function createGuru() {
   $email = htmlspecialchars($_POST["email"]);
   $no_telp = htmlspecialchars($_POST["no_telp"]);
   $guru_mapel = htmlspecialchars($_POST["guru_mapel"]);
-   $q1 = "SELECT nama FROM guru WHERE nama = '$nama'";
-  $r1 = mysqli_query($conn, $q1);
-  if ( mysqli_fetch_assoc($r1) ) {
-    echo "<script>
-    alert('Nama Sudah Terdaftar');
-    </script>";
-      return false;
-    }  
-    $q2 = "INSERT INTO guru VALUES (
-    '', '$nama', '$email', '$no_telp', '$guru_mapel')";
 
-    $r2 = mysqli_query($conn, $q2);
-    return mysqli_affected_rows($conn);
+  // Cek apakah email sudah ada
+  $q2 = "SELECT email FROM guru WHERE email = '$email'";
+  $r2 = mysqli_query($conn, $q2);
+  if (mysqli_fetch_assoc($r2)) {
+    echo "<script>alert('Email Sudah Terdaftar');</script>";
+    return false;
+  }
+
+  // Cek apakah nomor telepon sudah ada
+  $q3 = "SELECT no_telp FROM guru WHERE no_telp = '$no_telp'";
+  $r3 = mysqli_query($conn, $q3);
+  if (mysqli_fetch_assoc($r3)) {
+    echo "<script>alert('Nomor Telepon Sudah Terdaftar');</script>";
+    return false;
+  }
+
+  // Jika tidak ada duplikasi, insert data
+  $q4 = "INSERT INTO guru VALUES ('', '$nama', '$email', '$no_telp', '$guru_mapel')";
+  $r4 = mysqli_query($conn, $q4);
+  return mysqli_affected_rows($conn);
 }
 
 function createMapel() {

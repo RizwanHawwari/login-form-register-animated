@@ -77,7 +77,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['logout'])) {
       <?php endforeach; ?>
 
     </table>
-    <a class="add-user" href="createGuru.php">Tambah Data Guru</a>
+    <a class="add-user" href="create.php?tabel=guru">Tambah Data Guru</a>
 
     <div class="logout-link">
       <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">

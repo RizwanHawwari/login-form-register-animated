@@ -145,65 +145,41 @@ function deleteMapel() {
 
 }
 
-function create() {
+function create($table, $fields) {
   global $conn;
-  $nama = htmlspecialchars($_POST["nama"]);
-  $nis = htmlspecialchars($_POST["nis"]);
-  $email = htmlspecialchars($_POST["email"]);
-  $no_telp = htmlspecialchars($_POST["no_telp"]);
 
-  $q2 = "SELECT email FROM siswa WHERE email = '$email'";
+  $fieldData = [];
+  foreach ($fields as $field => $value) {
+      $fieldData[$field] = htmlspecialchars($value);
+  }
+
+  $email = $fieldData['email'];
+  $q2 = "SELECT email FROM $table WHERE email = '$email'";
   $r2 = mysqli_query($conn, $q2);
   if (mysqli_fetch_assoc($r2)) {
-    echo "<script>alert('Email Sudah Terdaftar');</script>";
-    return false;
+      echo "<script>alert('Email Sudah Terdaftar');</script>";
+      return false;
   }
 
+  $no_telp = $fieldData['no_telp'];
   if (!validatePhoneNumber($no_telp)) {
-    echo "<script>alert('Nomor Telepon Tidak Valid');</script>";
-    return false;
-}
+      echo "<script>alert('Nomor Telepon Tidak Valid');</script>";
+      return false;
+  }
 
-  $q3 = "SELECT no_telp FROM siswa WHERE no_telp = '$no_telp'";
+  $q3 = "SELECT no_telp FROM $table WHERE no_telp = '$no_telp'";
   $r3 = mysqli_query($conn, $q3);
   if (mysqli_fetch_assoc($r3)) {
-    echo "<script>alert('Nomor Telepon Sudah Terdaftar');</script>";
-    return false;
+      echo "<script>alert('Nomor Telepon Sudah Terdaftar');</script>";
+      return false;
   }
 
-  $q4 = "INSERT INTO siswa VALUES ('', '$nama', $nis, '$email', '$no_telp')";
+  $columns = implode(", ", array_keys($fieldData));
+  $values = implode("', '", array_values($fieldData));
+
+  $q4 = "INSERT INTO $table ($columns) VALUES ('$values')";
   $r4 = mysqli_query($conn, $q4);
-  return mysqli_affected_rows($conn);
-}
 
-function createGuru() {
-  global $conn;
-  $nama = htmlspecialchars($_POST["nama"]);
-  $email = htmlspecialchars($_POST["email"]);
-  $no_telp = htmlspecialchars($_POST["no_telp"]);
-  $guru_mapel = htmlspecialchars($_POST["guru_mapel"]);
-
-  $q2 = "SELECT email FROM guru WHERE email = '$email'";
-  $r2 = mysqli_query($conn, $q2);
-  if (mysqli_fetch_assoc($r2)) {
-    echo "<script>alert('Email Sudah Terdaftar');</script>";
-    return false;
-  }
-
-  if (!validatePhoneNumber($no_telp)) {
-    echo "<script>alert('Nomor Telepon Tidak Valid');</script>";
-    return false;
-}
-
-  $q3 = "SELECT no_telp FROM guru WHERE no_telp = '$no_telp'";
-  $r3 = mysqli_query($conn, $q3);
-  if (mysqli_fetch_assoc($r3)) {
-    echo "<script>alert('Nomor Telepon Sudah Terdaftar');</script>";
-    return false;
-  }
-
-  $q4 = "INSERT INTO guru VALUES ('', '$nama', '$email', '$no_telp', '$guru_mapel')";
-  $r4 = mysqli_query($conn, $q4);
   return mysqli_affected_rows($conn);
 }
 

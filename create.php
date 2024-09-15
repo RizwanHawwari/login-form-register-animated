@@ -20,16 +20,27 @@ if ( !in_array($tabel, $tabelValid) ) {
 }
 
 if (isset($_POST["submit"])) {
-    $fields = [
-        "nama" => $_POST["nama"],
-        "email" => $_POST["email"],
-        "no_telp" => $_POST["no_telp"]
-    ];
-
+    $fields = [];
+    
     if ($tabel == "siswa") {
-        $fields["nis"] = $_POST["nis"];
+        $fields = [
+            "nama" => $_POST["nama"],
+            "email" => $_POST["email"],
+            "no_telp" => $_POST["no_telp"],
+            "nis" => $_POST["nis"]
+        ];
     } elseif ($tabel == "guru") {
-        $fields["guru_mapel"] = $_POST["guru_mapel"];
+        $fields = [
+            "nama" => $_POST["nama"],
+            "email" => $_POST["email"],
+            "no_telp" => $_POST["no_telp"],
+            "guru_mapel" => $_POST["guru_mapel"]
+        ];
+    } elseif ($tabel == "mapel") {
+        $fields = [
+            "kode" => $_POST["kode"],
+            "nama" => $_POST["nama"]
+        ];
     }
 
     if (create($tabel, $fields) > 0) {
@@ -56,32 +67,56 @@ if (isset($_POST["submit"])) {
 
     <form action="" method="post" autocomplete="off">
       <ul>
+        <?php if ($tabel == "siswa"): ?>
         <li>
           <label for="nama">Nama: </label>
           <input type="text" id="nama" name="nama" required>
         </li>
-
-        <?php if ($tabel == "siswa"): ?>
         <li>
           <label for="nis">NIS: </label>
           <input type="text" name="nis" id="nis" required>
         </li>
-        <?php endif; ?>
-
         <li>
           <label for="email">Email: </label>
           <input type="email" name="email" id="email" required>
         </li>
-
         <li>
           <label for="no_telp">No Telp: </label>
           <input type="tel" name="no_telp" id="no_telp" required>
         </li>
-
-        <?php if ($tabel == "guru"): ?>
+        <?php elseif ($tabel == "guru"): ?>
         <li>
-          <label for="guru_mapel">Guru Mapel: </label>
-          <input type="text" name="guru_mapel" id="guru_mapel" required>
+          <label for="nama">Nama: </label>
+          <input type="text" id="nama" name="nama" required>
+        </li>
+        <li>
+          <label for="guru_mapel">Mapel: </label>
+          <select name="guru_mapel" id="guru_mapel" required>
+            <?php
+            $mapelQuery = "SELECT * FROM mapel";
+            $mapelResult = mysqli_query($conn, $mapelQuery);
+            while ($mapel = mysqli_fetch_assoc($mapelResult)) {
+              echo "<option value='{$mapel['id']}'>{$mapel['nama']}</option>";
+            }
+            ?>
+          </select>
+        </li>
+        <li>
+          <label for="email">Email: </label>
+          <input type="email" name="email" id="email" required>
+        </li>
+        <li>
+          <label for="no_telp">No Telp: </label>
+          <input type="tel" name="no_telp" id="no_telp" required>
+        </li>
+        <?php elseif ($tabel == "mapel"): ?>
+        <li>
+          <label for="kode">Kode: </label>
+          <input type="text" id="kode" name="kode" required>
+        </li>
+        <li>
+          <label for="nama">Nama: </label>
+          <input type="text" name="nama" id="nama" required>
         </li>
         <?php endif; ?>
 

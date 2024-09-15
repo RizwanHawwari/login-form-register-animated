@@ -63,14 +63,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['logout'])) {
         <td><?= $i; ?></td>
         <td><?= $s["kode"]; ?></td>
         <td><?= $s["nama"]; ?></td>
-        <td><a class="edit-btn" href="updateMapel.php?id=<?= $s['id'] ?>">Edit</a><a class="delete-btn"
+        <td><a class="edit-btn" href="update.php?tabel=mapel&id=<?= $s['id'] ?>">Edit</a><a class="delete-btn"
             href="delete.php?tabel=mapel&id=<?= $s['id']; ?>">Delete</a></td>
       </tr>
       <?php $i++; ?>
       <?php endforeach; ?>
 
     </table>
-    <a class="add-user" href="createMapel.php">Tambah Data Mapel</a>
+    <a class="add-user" href="create.php?tabel=mapel">Tambah Data Mapel</a>
 
     <div class="logout-link">
       <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">

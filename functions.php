@@ -124,30 +124,39 @@ function deleteMapel() {
 function create($table, $fields) {
   global $conn;
 
+  //validasi buat tabel yg bkn mapel
+  if ($table != "mapel") {
+    $fieldData = [];
+    foreach ($fields as $field => $value) {
+        $fieldData[$field] = htmlspecialchars($value);
+    }
+
+    $email = $fieldData['email'];
+    $q2 = "SELECT email FROM $table WHERE email = '$email'";
+    $r2 = mysqli_query($conn, $q2);
+    if (mysqli_fetch_assoc($r2)) {
+        echo "<script>alert('Email Sudah Terdaftar');</script>";
+        return false;
+    }
+
+    $no_telp = $fieldData['no_telp'];
+    if (!validatePhoneNumber($no_telp)) {
+        echo "<script>alert('Nomor Telepon Tidak Valid');</script>";
+        return false;
+    }
+
+    $q3 = "SELECT no_telp FROM $table WHERE no_telp = '$no_telp'";
+    $r3 = mysqli_query($conn, $q3);
+    if (mysqli_fetch_assoc($r3)) {
+        echo "<script>alert('Nomor Telepon Sudah Terdaftar');</script>";
+        return false;
+    }
+  }
+  
+//buat mapel
   $fieldData = [];
   foreach ($fields as $field => $value) {
       $fieldData[$field] = htmlspecialchars($value);
-  }
-
-  $email = $fieldData['email'];
-  $q2 = "SELECT email FROM $table WHERE email = '$email'";
-  $r2 = mysqli_query($conn, $q2);
-  if (mysqli_fetch_assoc($r2)) {
-      echo "<script>alert('Email Sudah Terdaftar');</script>";
-      return false;
-  }
-
-  $no_telp = $fieldData['no_telp'];
-  if (!validatePhoneNumber($no_telp)) {
-      echo "<script>alert('Nomor Telepon Tidak Valid');</script>";
-      return false;
-  }
-
-  $q3 = "SELECT no_telp FROM $table WHERE no_telp = '$no_telp'";
-  $r3 = mysqli_query($conn, $q3);
-  if (mysqli_fetch_assoc($r3)) {
-      echo "<script>alert('Nomor Telepon Sudah Terdaftar');</script>";
-      return false;
   }
 
   $columns = implode(", ", array_keys($fieldData));
@@ -158,26 +167,6 @@ function create($table, $fields) {
 
   return mysqli_affected_rows($conn);
 }
-
-function createMapel() {
-  global $conn;
-  $kode = htmlspecialchars($_POST["kode"]);
-  $nama = htmlspecialchars($_POST["nama"]);
-   $q1 = "SELECT nama FROM mapel WHERE nama = '$nama'";
-  $r1 = mysqli_query($conn, $q1);
-  if ( mysqli_fetch_assoc($r1) ) {
-    echo "<script>
-    alert('Nama Sudah Terdaftar');
-    </script>";
-      return false;
-    }  
-    $q2 = "INSERT INTO mapel VALUES (
-    '', '$kode', '$nama')";
-
-    $r2 = mysqli_query($conn, $q2);
-    return mysqli_affected_rows($conn);
-}
-
 
 function validatePhoneNumber($no_telp) {
 

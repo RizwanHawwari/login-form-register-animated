@@ -19,82 +19,60 @@ function query($query) {
 function edit($tabel, $id) {
   global $conn;
   
-  $tabelValid = ["siswa", "guru"];
+  $tabelValid = ["siswa", "guru", "mapel"];
   if (!in_array($tabel, $tabelValid)) {
       return false;
   }
 
-  $nama = htmlspecialchars($_POST["nama"]);
-  $email = htmlspecialchars($_POST["email"]);
-  $no_telp = htmlspecialchars($_POST["no_telp"]);
-  
-  // Validasi email dan no telp agar tidak duplikat
-  $q2 = "SELECT email FROM $tabel WHERE email = '$email' AND id != '$id'";
-  $r2 = mysqli_query($conn, $q2);
-  if (mysqli_fetch_assoc($r2)) {
-      echo "<script>alert('Email Sudah Terdaftar');</script>";
-      return false;
+  if ($tabel == "siswa" || $tabel == "guru") {
+    $nama = htmlspecialchars($_POST["nama"]);
+    $email = isset($_POST["email"]) ? htmlspecialchars($_POST["email"]) : '';
+    $no_telp = isset($_POST["no_telp"]) ? htmlspecialchars($_POST["no_telp"]) : '';
+
+    if ($tabel == "siswa") {
+        $nis = htmlspecialchars($_POST["nis"]);
+        $query = "UPDATE siswa SET
+            nama = '$nama',
+            nis = '$nis',
+            email = '$email',
+            no_telp = '$no_telp'
+            WHERE id = $id";
+    } elseif ($tabel == "guru") {
+        $guru_mapel = htmlspecialchars($_POST["guru_mapel"]);
+
+        $q4 = "SELECT id FROM mapel WHERE nama = '$guru_mapel'";
+        $r4 = mysqli_query($conn, $q4);
+        if (!$r4) {
+            echo "<script>alert('Query gagal: " . mysqli_error($conn) . "');</script>";
+            return false;
+        }
+        $mapel = mysqli_fetch_assoc($r4);
+        $mapel_id = $mapel ? $mapel['id'] : 0;
+
+        $query = "UPDATE guru SET
+            nama = '$nama',
+            email = '$email',
+            no_telp = '$no_telp',
+            guru_mapel = '$mapel_id'
+            WHERE id = $id";
+    }
+  } elseif ($tabel == "mapel") {
+    $kode = htmlspecialchars($_POST["kode"]);
+    $nama = htmlspecialchars($_POST["nama"]);
+    $query = "UPDATE mapel SET
+        kode = '$kode',
+        nama = '$nama'
+        WHERE id = $id";
   }
 
-  if (!validatePhoneNumber($no_telp)) {
-      echo "<script>alert('Nomor Telepon Tidak Valid');</script>";
-      return false;
-  }
-
-  $q3 = "SELECT no_telp FROM $tabel WHERE no_telp = '$no_telp' AND id != '$id'";
-  $r3 = mysqli_query($conn, $q3);
-  if (mysqli_fetch_assoc($r3)) {
-      echo "<script>alert('Nomor Telepon Sudah Terdaftar');</script>";
-      return false;
-  }
-
-  if ($tabel == "siswa") {
-      $nis = htmlspecialchars($_POST["nis"]);
-      $query = "UPDATE siswa SET
-          nama = '$nama',
-          nis = '$nis',
-          email = '$email',
-          no_telp = '$no_telp'
-          WHERE id = $id";
-  } elseif ($tabel == "guru") {
-      $guru_mapel = htmlspecialchars($_POST["guru_mapel"]);
-      $query = "UPDATE guru SET
-          nama = '$nama',
-          email = '$email',
-          no_telp = '$no_telp',
-          guru_mapel = '$guru_mapel'
-          WHERE id = $id";
-  }
-
-  mysqli_query($conn, $query);
-  return mysqli_affected_rows($conn);
-}
-
-function editMapelGuru() {
-  global $conn;
-
-  $kode = htmlspecialchars($_POST["kode"]);
-  $nama = htmlspecialchars($_POST["nama"]);
-
-  $q1 = "SELECT nama FROM mapel WHERE nama = '$nama'";
-  $r1 = mysqli_query($conn, $q1);
-  if ( mysqli_fetch_assoc($r1) ) {
-    echo "<script>
-    alert('Nama Sudah Terdaftar');
-    </script>";
+  $result = mysqli_query($conn, $query);
+  if (!$result) {
+    echo "<script>alert('Query gagal: " . mysqli_error($conn) . "');</script>";
     return false;
   }
-
-$id = $_POST["id"];
-
-$query = "UPDATE mapel SET
-kode = '$kode',
-nama = '$nama'
-WHERE id = $id";
-$result = mysqli_query($conn, $query);
-
-return mysqli_affected_rows($conn);
-} 
+  
+  return mysqli_affected_rows($conn);
+}
 
 function delete($tabel, $id) {
   global $conn;
@@ -108,17 +86,6 @@ function delete($tabel, $id) {
   mysqli_query($conn, $query);
   
   return mysqli_affected_rows($conn);
-}
-
-
-
-function deleteMapel() {
-  global $conn;
-  $id = $_GET["id"];
-  $q2 = "DELETE FROM mapel WHERE id = '$id'";
-  mysqli_query($conn, $q2);
-  return mysqli_affected_rows($conn);
-
 }
 
 function create($table, $fields) {

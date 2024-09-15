@@ -18,6 +18,11 @@ if ($tabel == "siswa") {
 } elseif ($tabel == "guru") {
     $data = query("SELECT * FROM guru WHERE id = $id");
     $title = "Ubah Data Guru";
+    //ngambil data mapel untuk dropdown
+    $mapel = query("SELECT * FROM mapel");
+} elseif ($tabel == "mapel") {
+    $data = query("SELECT * FROM mapel WHERE id = $id");
+    $title = "Ubah Data Mapel";
 } else {
     echo "<script>alert('Tabel tidak valid!');</script>";
     exit;
@@ -54,16 +59,16 @@ if (isset($_POST["edit"])) {
     <form action="" method="post">
       <ul>
         <input type="hidden" name="id" value="<?= $s["id"]; ?>">
+
+        <?php if ($tabel == "siswa") : ?>
         <li>
           <label for="nama">Nama: </label>
           <input type="text" id="nama" name="nama" value="<?= $s["nama"];?>">
         </li>
-        <?php if ($tabel == "siswa") : ?>
         <li>
           <label for="nis">NIS: </label>
           <input type="text" name="nis" id="nis" value="<?= $s["nis"]; ?>">
         </li>
-        <?php endif; ?>
         <li>
           <label for="email">Email: </label>
           <input type="email" name="email" id="email" value="<?= $s["email"]; ?>">
@@ -72,11 +77,38 @@ if (isset($_POST["edit"])) {
           <label for="no_telp">Nomor Telepon: </label>
           <input type="tel" name="no_telp" id="no_telp" value="<?= $s["no_telp"]; ?>">
         </li>
-
-        <?php if ($tabel == "guru") : ?>
+        <?php elseif ($tabel == "guru") : ?>
+        <li>
+          <label for="nama">Nama: </label>
+          <input type="text" id="nama" name="nama" value="<?= $s["nama"];?>">
+        </li>
         <li>
           <label for="guru_mapel">Mapel: </label>
-          <input type="text" name="guru_mapel" id="guru_mapel" value="<?= $s["guru_mapel"]; ?>">
+          <select name="guru_mapel" id="guru_mapel">
+            <?php foreach ($mapel as $m) : ?>
+            <option value="<?= $m['nama']; ?>" <?= ($s["guru_mapel"] == $m['nama']) ? 'selected' : ''; ?>>
+              <?= $m['nama']; ?>
+            </option>
+            <?php endforeach; ?>
+          </select>
+        </li>
+
+        <li>
+          <label for="email">Email: </label>
+          <input type="email" name="email" id="email" value="<?= $s["email"]; ?>">
+        </li>
+        <li>
+          <label for="no_telp">Nomor Telepon: </label>
+          <input type="tel" name="no_telp" id="no_telp" value="<?= $s["no_telp"]; ?>">
+        </li>
+        <?php elseif ($tabel == "mapel") : ?>
+        <li>
+          <label for="kode">Kode: </label>
+          <input type="text" id="kode" name="kode" value="<?= $s["kode"];?>">
+        </li>
+        <li>
+          <label for="nama">Nama: </label>
+          <input type="text" name="nama" id="nama" value="<?= $s["nama"]; ?>">
         </li>
         <?php endif; ?>
 

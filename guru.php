@@ -39,7 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['logout'])) {
     <div class="brand">Rookies School Management</div>
     <nav>
       <ul>
-        <li><a href="anggota.php">Siswa</a></li>
+        <li><a href="siswa.php">Siswa</a></li>
         <li><a href="guru.php">Guru</a></li>
         <li><a href="mapel.php">Mapel</a></li>
       </ul>

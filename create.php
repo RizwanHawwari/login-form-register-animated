@@ -13,7 +13,7 @@ if ( !isset($_GET["tabel"]) ) {
 }
 
 $tabel = $_GET["tabel"];
-$tabelValid = ["anggota", "guru", "mapel"];
+$tabelValid = ["siswa", "guru", "mapel"];
 if ( !in_array($tabel, $tabelValid) ) {
     header("Location: anggota.php");
     exit;
@@ -26,7 +26,7 @@ if (isset($_POST["submit"])) {
         "no_telp" => $_POST["no_telp"]
     ];
 
-    if ($tabel == "anggota") {
+    if ($tabel == "siswa") {
         $fields["nis"] = $_POST["nis"];
     } elseif ($tabel == "guru") {
         $fields["guru_mapel"] = $_POST["guru_mapel"];
@@ -61,7 +61,7 @@ if (isset($_POST["submit"])) {
           <input type="text" id="nama" name="nama" required>
         </li>
 
-        <?php if ($tabel == "anggota"): ?>
+        <?php if ($tabel == "siswa"): ?>
         <li>
           <label for="nis">NIS: </label>
           <input type="text" name="nis" id="nis" required>

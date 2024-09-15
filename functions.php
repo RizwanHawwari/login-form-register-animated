@@ -121,13 +121,9 @@ return mysqli_affected_rows($conn);
 function delete($tabel, $id) {
   global $conn;
 
-  $tabelValid = ["anggota", "guru"];
+  $tabelValid = ["siswa", "guru"];
   if (!in_array($tabel, $tabelValid)) {
       return false;
-  }
-
-  if ( $tabel == "anggota" ) {
-    $tabel = "siswa";
   }
 
   $query = "DELETE FROM $tabel WHERE id = '$id'";

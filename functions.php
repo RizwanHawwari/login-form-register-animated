@@ -98,17 +98,18 @@ return mysqli_affected_rows($conn);
 
 function delete($tabel, $id) {
   global $conn;
-
-  $tabelValid = ["siswa", "guru"];
+  
+  $tabelValid = ['siswa', 'guru', 'mapel'];
   if (!in_array($tabel, $tabelValid)) {
       return false;
   }
-
+  
   $query = "DELETE FROM $tabel WHERE id = '$id'";
   mysqli_query($conn, $query);
-
+  
   return mysqli_affected_rows($conn);
 }
+
 
 
 function deleteMapel() {

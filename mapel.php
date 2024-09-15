@@ -64,7 +64,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['logout'])) {
         <td><?= $s["kode"]; ?></td>
         <td><?= $s["nama"]; ?></td>
         <td><a class="edit-btn" href="updateMapel.php?id=<?= $s['id'] ?>">Edit</a><a class="delete-btn"
-            href="deleteMapel.php?id=<?= $s['id']; ?>">Delete</a></td>
+            href="delete.php?tabel=mapel&id=<?= $s['id']; ?>">Delete</a></td>
       </tr>
       <?php $i++; ?>
       <?php endforeach; ?>

@@ -1,5 +1,15 @@
 <?php
+session_start();
 require "functions.php";
+
+$tabel = $_GET["tabel"];
+if ( !isset($_SESSION["session_username"]) ) {
+    echo "<script>
+    alert('Anda Harus Login Untuk Menggunakan Fitur Ini');
+    window.location.href='$tabel.php';
+    </script>";
+    exit;
+}
 
 if (isset($_GET["tabel"]) && isset($_GET["id"])) {
     $tabel = $_GET["tabel"];

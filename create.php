@@ -2,8 +2,12 @@
 session_start();
 require "functions.php";
 
+$tabel = $_GET["tabel"];
 if ( !isset($_SESSION["session_username"]) ) {
-    header("Location: login.php");
+    echo "<script>
+    alert('Anda Harus Login Untuk Menggunakan Fitur Ini');
+    window.location.href='$tabel.php';
+    </script>";
     exit;
 }
 
@@ -12,7 +16,6 @@ if ( !isset($_GET["tabel"]) ) {
     exit;
 }
 
-$tabel = $_GET["tabel"];
 $tabelValid = ["siswa", "guru", "mapel"];
 if ( !in_array($tabel, $tabelValid) ) {
     header("Location: anggota.php");

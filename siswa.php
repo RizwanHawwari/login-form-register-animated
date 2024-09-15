@@ -39,6 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['logout'])) {
     <div class="brand">Rookies School Management</div>
     <nav>
       <ul>
+        <li><a href="anggota.php">Home</a></li>
         <li><a href="siswa.php">Siswa</a></li>
         <li><a href="guru.php">Guru</a></li>
         <li><a href="mapel.php">Mapel</a></li>
@@ -49,7 +50,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['logout'])) {
 
   <div class="container">
     <h1 class="welcome">Welcome, <?php echo $username; ?>!</h1>
-    <p>Kamu telah berhasil login dan ini adalah data siswa</p>
+    <p>Data Siswa</p>
     <table border="1" cellpadding="10" cellspacing="0">
       <tr>
         <th>No</th>

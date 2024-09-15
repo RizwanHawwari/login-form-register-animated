@@ -2,9 +2,10 @@
 session_start();
 require "functions.php";
 
-if ( !isset( $_SESSION["session_username"] ) ) {
-  header("Location: login.php");
-  exit;
+if ( !isset($_SESSION["session_username"]) ) {
+  echo "<script>
+  alert('Anda Masuk Sebagai Guest');
+  </script>";
 }
 ?>
 

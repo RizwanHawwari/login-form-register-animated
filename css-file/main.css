@@ -1,0 +1,98 @@
+:root {
+  --secondary: #424242;
+  --primary: #eaeaea;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background-color: var(--primary);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+.container {
+  width: 100%;
+  height: 100vh;
+  background-color: var(--primary);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  position: relative;
+}
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background-color: var(--secondary);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+}
+.header h2 {
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--primary);
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+}
+.kategori {
+  min-width: 60%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  padding: 10px;
+}
+.siswa,
+.guru,
+.mapel {
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
+  padding: 20px;
+  margin: 10px 20px;
+  text-align: center;
+  box-shadow: 2px 2px 6px 1px rgba(0, 0, 0, 0.7);
+}
+.siswa button,
+.guru button,
+.mapel button {
+  width: 80%;
+  height: 30px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 8px;
+  background-color: var(--secondary);
+  box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.7);
+  cursor: pointer;
+}
+.siswa figcaption,
+.guru figcaption,
+.mapel figcaption {
+  margin-top: 6px;
+}
+button a {
+  color: #fff;
+  font-size: 1.3em;
+  letter-spacing: 0.5px;
+  text-decoration: none;
+}
+
+/* media screen */
+@media (max-width: 900px) {
+  .kategori {
+    min-width: 80%;
+    flex-direction: column;
+    padding-top: calc(60px + 20px);
+  }
+  .siswa,
+  .guru,
+  .mapel {
+    padding: 20px 40px;
+    margin: 25px 20px;
+  }
+}

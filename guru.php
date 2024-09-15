@@ -70,7 +70,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['logout'])) {
         <td><?= $s["email"]; ?></td>
         <td><?= $s["no_telp"]; ?></td>
         <td><?= $s["guru_mapel"]; ?></td>
-        <td><a class="edit-btn" href="updateGuru.php?id=<?= $s['id']; ?>">Edit</a><a class="delete-btn"
+        <td><a class="edit-btn" href="update.php?tabel=guru&id=<?= $s['id']; ?>">Edit</a><a class="delete-btn"
             href="delete.php?tabel=guru&id=<?= $s['id']; ?>">Delete</a></td>
       </tr>
       <?php $i++; ?>

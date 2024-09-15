@@ -16,79 +16,57 @@ function query($query) {
   return $rows;
 }
 
-function edit() {
+function edit($tabel, $id) {
   global $conn;
-  $nama = htmlspecialchars($_POST["nama"]);
-  $nis = htmlspecialchars($_POST["nis"]);
-  $email = htmlspecialchars($_POST["email"]);
-  $no_telp = htmlspecialchars($_POST["no_telp"]);
-  $id = $_POST["id"];
-
-  $q2 = "SELECT email FROM siswa WHERE email = '$email' AND id != '$id'";
-  $r2 = mysqli_query($conn, $q2);
-  if (mysqli_fetch_assoc($r2)) {
-    echo "<script>alert('Email Sudah Terdaftar');</script>";
-    return false;
+  
+  $tabelValid = ["siswa", "guru"];
+  if (!in_array($tabel, $tabelValid)) {
+      return false;
   }
 
-  if (!validatePhoneNumber($no_telp)) {
-    echo "<script>alert('Nomor Telepon Tidak Valid');</script>";
-    return false;
-}
-
-  $q3 = "SELECT no_telp FROM siswa WHERE no_telp = '$no_telp' AND id != '$id'";
-  $r3 = mysqli_query($conn, $q3);
-  if (mysqli_fetch_assoc($r3)) {
-    echo "<script>alert('Nomor Telepon Sudah Terdaftar');</script>";
-    return false;
-  }
-
-  $query = "UPDATE siswa SET
-  nama = '$nama',
-  nis = $nis,
-  email = '$email',
-  no_telp = '$no_telp'
-  WHERE id = $id";
-  $result = mysqli_query($conn, $query);
-
-  return mysqli_affected_rows($conn);
-}
-
-function editGuru() {
-  global $conn;
   $nama = htmlspecialchars($_POST["nama"]);
   $email = htmlspecialchars($_POST["email"]);
   $no_telp = htmlspecialchars($_POST["no_telp"]);
-  $guru_mapel = htmlspecialchars($_POST["guru_mapel"]);
-  $id = $_POST["id"];
-
-  $q2 = "SELECT email FROM guru WHERE email = '$email' AND id != '$id'";
+  
+  // Validasi email dan no telp agar tidak duplikat
+  $q2 = "SELECT email FROM $tabel WHERE email = '$email' AND id != '$id'";
   $r2 = mysqli_query($conn, $q2);
   if (mysqli_fetch_assoc($r2)) {
-    echo "<script>alert('Email Sudah Terdaftar');</script>";
-    return false;
+      echo "<script>alert('Email Sudah Terdaftar');</script>";
+      return false;
   }
 
   if (!validatePhoneNumber($no_telp)) {
-    echo "<script>alert('Nomor Telepon Tidak Valid');</script>";
-    return false;
-}
-
-  $q3 = "SELECT no_telp FROM guru WHERE no_telp = '$no_telp' AND id != '$id'";
-  $r3 = mysqli_query($conn, $q3);
-  if (mysqli_fetch_assoc($r3)) {
-    echo "<script>alert('Nomor Telepon Sudah Terdaftar');</script>";
-    return false;
+      echo "<script>alert('Nomor Telepon Tidak Valid');</script>";
+      return false;
   }
 
-  $query = "UPDATE guru SET
-  nama = '$nama',
-  email = '$email',
-  no_telp = '$no_telp',
-  guru_mapel = '$guru_mapel'
-  WHERE id = $id";
-  $result = mysqli_query($conn, $query);
+  $q3 = "SELECT no_telp FROM $tabel WHERE no_telp = '$no_telp' AND id != '$id'";
+  $r3 = mysqli_query($conn, $q3);
+  if (mysqli_fetch_assoc($r3)) {
+      echo "<script>alert('Nomor Telepon Sudah Terdaftar');</script>";
+      return false;
+  }
 
+  if ($tabel == "siswa") {
+      $nis = htmlspecialchars($_POST["nis"]);
+      $query = "UPDATE siswa SET
+          nama = '$nama',
+          nis = '$nis',
+          email = '$email',
+          no_telp = '$no_telp'
+          WHERE id = $id";
+  } elseif ($tabel == "guru") {
+      $guru_mapel = htmlspecialchars($_POST["guru_mapel"]);
+      $query = "UPDATE guru SET
+          nama = '$nama',
+          email = '$email',
+          no_telp = '$no_telp',
+          guru_mapel = '$guru_mapel'
+          WHERE id = $id";
+  }
+
+  mysqli_query($conn, $query);
   return mysqli_affected_rows($conn);
 }
 

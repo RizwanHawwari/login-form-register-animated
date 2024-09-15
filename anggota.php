@@ -69,7 +69,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['logout'])) {
         <td><?= $s["email"]; ?></td>
         <td><?= $s["no_telp"]; ?></td>
         <td><a class="edit-btn" href="update.php?id=<?= $s["id"]; ?>">Edit </a> <a class="delete-btn"
-            href="delete.php?id=<?= $s['id']; ?>">Delete</a></td>
+            href="delete.php?tabel=anggota&id=<?= $s['id']; ?>">Delete</a></td>
       </tr>
       <?php $i++; ?>
       <?php endforeach; ?>

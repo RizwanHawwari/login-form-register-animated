@@ -71,7 +71,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['logout'])) {
         <td><?= $s["no_telp"]; ?></td>
         <td><?= $s["guru_mapel"]; ?></td>
         <td><a class="edit-btn" href="updateGuru.php?id=<?= $s['id']; ?>">Edit</a><a class="delete-btn"
-            href="deleteGuru.php?id=<?= $s['id']; ?>">Delete</a></td>
+            href="delete.php?tabel=guru&id=<?= $s['id']; ?>">Delete</a></td>
       </tr>
       <?php $i++; ?>
       <?php endforeach; ?>

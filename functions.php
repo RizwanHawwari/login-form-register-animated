@@ -118,23 +118,24 @@ $result = mysqli_query($conn, $query);
 return mysqli_affected_rows($conn);
 } 
 
-function delete() {
+function delete($tabel, $id) {
   global $conn;
-  $id = $_GET["id"];
-  $q2 = "DELETE FROM siswa WHERE id = '$id'";
-  mysqli_query($conn, $q2);
-  return mysqli_affected_rows($conn);
 
+  $tabelValid = ["anggota", "guru"];
+  if (!in_array($tabel, $tabelValid)) {
+      return false;
+  }
+
+  if ( $tabel == "anggota" ) {
+    $tabel = "siswa";
+  }
+
+  $query = "DELETE FROM $tabel WHERE id = '$id'";
+  mysqli_query($conn, $query);
+
+  return mysqli_affected_rows($conn);
 }
 
-function deleteGuru() {
-  global $conn;
-  $id = $_GET["id"];
-  $q2 = "DELETE FROM guru WHERE id = '$id'";
-  mysqli_query($conn, $q2);
-  return mysqli_affected_rows($conn);
-
-}
 
 function deleteMapel() {
   global $conn;

@@ -88,10 +88,12 @@ if (isset($_POST['register'])) {
 </head>
 <body>
   <div class="container">
-    <div class="logo-cn">
-      <img src="img/logo-cn.png" alt="logo-cn" width="80px">
-    </div>
     <div class="login-box">
+      <div class="logo-cn">
+        <div class="logo-bg">
+          <img src="img/logo-cn.png" alt="logo-cn" width="100px">
+        </div>
+      </div>
       <h2>Create An Account</h2>
       <?php if ($err) { ?>
       <div id="register-alert" class="alert">
@@ -99,40 +101,40 @@ if (isset($_POST['register'])) {
       </div>
       <?php } ?>
       <form id="registerform" action="" method="post" role="form" autocomplete="off">
-        <div class="form-row">
-          <div class="input-box">
-            <input id="register-username" type="text" name="username" placeholder=" "
-              value="<?php echo htmlspecialchars($username) ?>" required>
-            <label>Username</label>
-          </div>
-          <div class="input-box">
-            <input id="register-email" type="text" name="email" placeholder=" "
-              value="<?php echo htmlspecialchars($email) ?>" required>
-            <label>Email</label>
-          </div>
-        </div>
-        <div class="form-row">
-          <div class="input-box">
-            <input id="register-password" type="password" name="password" placeholder=" " required>
-            <label>Password</label>
-          </div>
-          <div class="input-box">
-            <input id="register-konfirmasi-password" type="password" name="konfirmasi_password" placeholder=" " required>
-            <label>Confirm Password</label>
-          </div>
-        </div>
-        <div class="input-box">
-          <input id="register-no-telp" type="text" name="no_telp" value="<?php echo htmlspecialchars($no_telp) ?>"
-            placeholder=" " required>
-          <label>Phone Number</label>
-        </div>
-        <input type="submit" name="register" class="btn" value="Register">
-      </form>
+  <div class="form-row">
+    <div class="input-box">
+      <input id="register-username" type="text" name="username" placeholder=" "
+        value="<?php echo htmlspecialchars($username) ?>" required>
+      <label>Username</label>
+    </div>
+    <div class="input-box">
+      <input id="register-email" type="text" name="email" placeholder=" "
+        value="<?php echo htmlspecialchars($email) ?>" required>
+      <label>Email</label>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="input-box">
+      <input id="register-password" type="password" name="password" placeholder=" " required>
+      <label>Password</label>
+    </div>
+    <div class="input-box">
+      <input id="register-konfirmasi-password" type="password" name="konfirmasi_password" placeholder=" " required>
+      <label>Confirm Password</label>
+    </div>
+  </div>
+  <div class="input-box full-width">
+    <input id="register-no-telp" type="text" name="no_telp" value="<?php echo htmlspecialchars($no_telp) ?>"
+      placeholder=" " required>
+    <label>Phone Number</label>
+  </div>
+  <input type="submit" name="register" class="btn" value="Register">
+</form>
       <div class="login">
         <a href="login.php">Log In</a>
       </div>
     </div>
-
+    
     <!-- <span style="--i:0;"></span>
     <span style="--i:2;"></span>
     <span style="--i:4;"></span>

@@ -163,7 +163,7 @@ function createGuru() {
   $error = $_FILES["file"]["error"];
 
   if ($error === 0) {
-      $file_destination = "image/" . $file;
+      $file_destination = "img/" . $file;
       move_uploaded_file($tmp_name, $file_destination);
   } else {
       echo "<script>alert('Error saat mengunggah file');</script>";

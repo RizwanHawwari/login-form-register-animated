@@ -18,7 +18,7 @@ if (isset($_POST["submit"])) {
   if ($_FILES["file"]["error"] === 0) {
     $file_name = $_FILES["file"]["name"];
     $file_tmp = $_FILES["file"]["tmp_name"];
-    $file_destination = "image/" . $file_name;
+    $file_destination = "<img/" . $file_name;
 
     // memindahkan foto ke folder image
     if (move_uploaded_file($file_tmp, $file_destination)) {
@@ -56,34 +56,42 @@ if (isset($_POST["submit"])) {
   <h1>Tambah Data Guru</h1>
   <form action="" method="post" autocomplete="off" enctype="multipart/form-data">
     <ul>
-      <li>
-        <label for="nama">Nama: </label>
-        <input type="text" id="nama" name="nama" required>
-      </li>
-      <li>
-        <label for="email">Email: </label>
-        <input type="email" name="email" id="email" required>
-      </li>
-      <li>
-        <label for="no_telp">No Telp: </label>
-        <input type="tel" name="no_telp" id="no_telp" required>
-      </li>
-      <li>
-        <label for="guru_mapel">Guru Mapel: </label>
-        <input type="text" name="guru_mapel" id="guru_mapel" required>
-      </li>
-      <li>
-        <label for="jenis_kelamin">Perempuan</label>
-        <input type="radio" name="jenis_kelamin" value="Perempuan" id="jenis_kelamin_perempuan" required>
-      </li>
-      <li>
-        <label for="jenis_kelamin">Laki-laki</label>
-        <input type="radio" name="jenis_kelamin" value="Laki-laki" id="jenis_kelamin_laki" required>
-      </li>
-      <li>
-        <label for="file">Foto Diri:</label>
-        <input type="file" name="file" id="foto" required>
-      </li>
+    <li>
+            <label for="nama">Nama: </label>
+            <input type="text" id="nama" name="nama" required>
+        </li>
+        <li>
+            <label for="guru_mapel">Mapel: </label>
+            <select name="guru_mapel" id="guru_mapel" required>
+                <?php
+                $mapelQuery = "SELECT * FROM mapel";
+                $mapelResult = mysqli_query($conn, $mapelQuery);
+                while ($mapel = mysqli_fetch_assoc($mapelResult)) {
+                    echo "<option value='{$mapel['id']}'>{$mapel['nama']}</option>";
+                }
+                ?>
+            </select>
+        </li>
+        <li>
+            <label for="email">Email: </label>
+            <input type="email" name="email" id="email" required>
+        </li>
+        <li>
+            <label for="no_telp">No Telp: </label>
+            <input type="tel" name="no_telp" id="no_telp" required>
+        </li>
+        <li>
+            <label for="jenis_kelamin">Perempuan</label>
+            <input type="radio" name="jenis_kelamin" value="Perempuan" id="jenis_kelamin_perempuan" required>
+        </li>
+        <li>
+            <label for="jenis_kelamin">Laki-laki</label>
+            <input type="radio" name="jenis_kelamin" value="Laki-laki" id="jenis_kelamin_laki" required>
+        </li>
+        <li>
+            <label for="file">Foto Diri:</label>
+            <input type="file" name="file" id="foto" required>
+        </li>
       <li>
         <button type="submit" name="submit">Submit</button>
       </li>

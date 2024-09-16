@@ -1,7 +1,7 @@
 <?php
 session_start();
 require "functions.php";
-$mapel = query("SELECT * FROM Mapel");
+$siswa = query("SELECT * FROM siswa");
 
 // Check if the user is logged in
 if (!isset($_SESSION['session_username'])) {
@@ -47,31 +47,36 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['logout'])) {
     </nav>
   </header>
 
+
   <div class="container">
     <h1 class="welcome">Welcome, <?php echo $username; ?>!</h1>
-    <p>Data Mapel</p>
+    <p>Data Siswa</p>
     <table border="1" cellpadding="10" cellspacing="0">
       <tr>
         <th>No</th>
-        <th>Kode</th>
         <th>Nama</th>
+        <th>NIS</th>
+        <th>Email</th>
+        <th>No Telp</th>
         <th>Aksi</th>
       </tr>
 
       <?php $i = 1; ?>
-      <?php foreach( $mapel as $s ) : ?>
+      <?php foreach( $siswa as $s ) : ?>
       <tr>
         <td><?= $i; ?></td>
-        <td><?= $s["kode"]; ?></td>
         <td><?= $s["nama"]; ?></td>
-        <td><a class="edit-btn" href="update.php?tabel=mapel&id=<?= $s['id'] ?>">Edit</a><a class="delete-btn"
-            href="delete.php?tabel=mapel&id=<?= $s['id']; ?>">Delete</a></td>
+        <td><?= $s["nis"]; ?></td>
+        <td><?= $s["email"]; ?></td>
+        <td><?= $s["no_telp"]; ?></td>
+        <td><a class="edit-btn" href="update.php?tabel=siswa&id=<?= $s["id"]; ?>">Edit </a> <a class="delete-btn"
+            href="delete.php?tabel=siswa&id=<?= $s['id']; ?>">Delete</a></td>
       </tr>
       <?php $i++; ?>
       <?php endforeach; ?>
 
     </table>
-    <a class="add-user" href="create.php?tabel=mapel">Tambah Data Mapel</a>
+    <a class="add-user" href="create.php?tabel=siswa">Tambah Data Siswa</a>
 
     <div class="logout-link">
       <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">

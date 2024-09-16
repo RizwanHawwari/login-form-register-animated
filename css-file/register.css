@@ -1,9 +1,15 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
 :root {
-  --primary: #043d3d;
-  --secondary: #5ff094;
+  --secondary: #424242; /* Smooth Lavender */
+  --primary: #eaeaea; /* Creamy Lilac */
+  --third: #f8f6ff; /* Creamy Lilac V2 */
+  --error-bg: #fdecec;
+  --error-text: #b85c5c;
+  --login-bg: rgba(255, 255, 255, 0.9); /* 90% transparan */
+  --login-blur: blur(10px); /* menambahkan efek blur */
 }
+
 * {
   margin: 0;
   padding: 0;
@@ -21,10 +27,14 @@ body {
 .container {
   position: relative;
   width: 256px;
-  height: 256px;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.logo-cn {
+  position: fixed;
+  top: 20px;
 }
 .login-box {
   position: absolute;
@@ -46,9 +56,9 @@ h2 {
   width: 100%;
   height: 50px;
   background: transparent;
-  border: 2px solid #358f80;
+  border: 2px solid var(--secondary);
   font-size: 1em;
-  color: #fff;
+  color: var(--secondary);
   padding: 0 15px;
   outline: none;
   border-radius: 40px;
@@ -64,11 +74,12 @@ h2 {
   left: 20px;
   transform: translateY(-50%);
   font-size: 1em;
-  color: #fff;
+  color: var(--secondary);
   pointer-events: none;
   transition: 0.5s ease;
 }
 .input-box input:focus ~ label,
+.input-box input:not(:placeholder-shown) ~ label,
 .input-box input:valid ~ label {
   top: 1px;
   font-size: 0.8em;
@@ -81,7 +92,7 @@ h2 {
   left: 0;
   width: 18px;
   height: 6px;
-  background: #358f80;
+  background: var(--third);
   border-radius: 8px;
   transform-origin: 128px;
   transform: scale(3) rotate(calc(var(--i) * (360deg / 50)));
@@ -143,5 +154,17 @@ h2 {
   transition: 0.3s;
 }
 .signup-link a:hover {
+  text-decoration: underline;
+}
+.login {
+  margin-top: 10px;
+  text-align: center;
+}
+.login a {
+  text-decoration: none;
+  text-decoration: none;
+  color: var(--secondary);
+}
+.login a:hover {
   text-decoration: underline;
 }

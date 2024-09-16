@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['logout'])) {
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Detail Guru</title>
-  <link rel="stylesheet" href="css-file/anggo.css">
+  <link rel="stylesheet" href="css-file/anggota.css"> 
 </head>
 
 <body>
@@ -49,14 +49,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['logout'])) {
         <th>Foto</th>
       </tr>
       <tr>
-        <td><?=($guru["nama"]); ?></td>
-        <td><?=($guru["email"]); ?></td>
-        <td><?=($guru["no_telp"]); ?></td>
-        <td><?=($guru["guru_mapel"]); ?></td>
-        <td><?=($guru["jenis_kelamin"]); ?></td>
+        <td><?= $guru["nama"]; ?></td>
+        <td><?= $guru["email"]; ?></td>
+        <td><?= $guru["no_telp"]; ?></td>
+        <td><?= $guru["guru_mapel"]; ?></td>
+        <td><?= $guru["jenis_kelamin"]; ?></td>
         <td>
           <?php if ($guru["foto_guru"]) : ?>
-            <img src="image/<?=($guru['foto_guru']); ?>" alt="Foto Guru" width="100" height="100">
+            <img src="img/<?= $guru['foto_guru']; ?>" alt="Foto Guru" width="100" height="100">
           <?php else: ?>
             <p>No Image</p>
           <?php endif; ?>

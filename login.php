@@ -91,7 +91,11 @@ if (isset($_POST['login'])) {
 </head>
 
 <body>
+
   <div class="container">
+    <div class="logo-cn">
+      <img src="img/logo-cn.png" alt="logo-cn" width="100px">
+    </div>
     <div class="login-box">
       <?php if ($err) { ?>
       <!-- Tampilkan pesan kesalahan jika ada -->

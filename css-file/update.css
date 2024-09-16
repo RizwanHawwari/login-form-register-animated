@@ -1,13 +1,15 @@
 :root {
-  --primary: #043d3d;
-  --secondary: #5ff094;
-  --tertiary: #1e201e;
-  --background: #121212; /* buat background */
-  --input-bg: #2b2b2b; /* buat warna background si field */
-  --input-border: #5ff094; /* buat garis tepi field */
-  --button-bg: #043d3d; /* buat tombol submit */
-  --button-text: #ffffff;
-  --hover-bg: #036b6b;
+  --primary: #eaeaea; /* warna utama yang lebih lembut */
+  --secondary: #424242; /* warna sekunder yang lebih netral */
+  --tertiary: #f8f6ff; /* warna latar belakang form */
+  --background: #f8f6ff; /* warna background halaman */
+  --input-bg: #ffffff; /* latar belakang field input lebih terang */
+  --input-border: #424242; /* garis tepi field */
+  --button-bg: #424242; /* tombol submit */
+  --button-text: #ffffff; /* teks tombol */
+  --hover-bg: #616161; /* warna saat hover tombol */
+  --error-bg: #fdecec; /* warna latar belakang untuk error */
+  --error-text: #b85c5c; /* warna teks error */
 }
 
 * {
@@ -22,7 +24,7 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background: var(--background);
+  background: var(--background); /* latar belakang yang lebih terang */
   color: var(--secondary);
 }
 
@@ -38,10 +40,10 @@ h1 {
 }
 
 .form-control {
-  background-color: var(--primary);
+  background-color: var(--primary); /* warna utama lebih lembut untuk form */
   padding: 30px;
   border-radius: 10px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* bayangan lebih lembut */
 }
 
 form ul {
@@ -63,8 +65,8 @@ label {
 input {
   width: 100%;
   padding: 10px;
-  background: var(--input-bg);
-  border: 1px solid var(--input-border);
+  background: var(--input-bg); /* background input lebih netral */
+  border: 1px solid var(--input-border); /* warna border lebih tenang */
   border-radius: 5px;
   color: var(--secondary);
 }
@@ -77,7 +79,7 @@ input:focus {
 
 button {
   padding: 10px 20px;
-  background-color: var(--button-bg);
+  background-color: var(--button-bg); /* tombol dengan warna tenang */
   border: none;
   border-radius: 5px;
   color: var(--button-text);
@@ -86,5 +88,21 @@ button {
 }
 
 button:hover {
-  background-color: var(--hover-bg);
+  background-color: var(--hover-bg); /* warna hover lebih tenang */
+}
+
+.alert {
+  padding: 10px;
+  background-color: var(--error-bg); /* latar belakang untuk error */
+  color: var(--error-text); /* warna teks error */
+  border: 1px solid var(--error-text);
+  border-radius: 5px;
+}
+
+.alert ul {
+  list-style: none;
+}
+
+.alert ul li {
+  text-align: center;
 }

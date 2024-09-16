@@ -67,7 +67,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['logout'])) {
     <a href="guru.php">Kembali ke daftar guru</a>
 
     <div class="logout-link">
-      <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
+      <form action="<?= $_SERVER['PHP_SELF']; ?>" method="post">
         <input type="submit" name="logout" class="btn" value="Logout">
       </form>
     </div>

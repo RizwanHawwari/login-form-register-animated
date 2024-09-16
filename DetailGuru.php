@@ -1,18 +1,16 @@
 <?php
 session_start();
 require "functions.php";
-$guru = query("SELECT * FROM guru");
+$id = $_GET["id"];
 
-// Check if the user is logged in
+$guru = query("SELECT * FROM guru WHERE id = $id")[0];
+
 if (!isset($_SESSION['session_username'])) {
-    // Logika di sini tetap kosong tanpa redirect atau exit
     $username = "Guest"; // Menampilkan pesan default jika tidak ada username di sesi
 } else {
-    // Fetch user details from session
     $username = htmlspecialchars($_SESSION['session_username']);
 }
 
-// Handle logout logic
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['logout'])) {
     session_unset();
     session_destroy();
@@ -30,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['logout'])) {
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Member's Page</title>
+  <title>Detail Guru</title>
   <link rel="stylesheet" href="css-file/anggo.css">
 </head>
 
@@ -40,33 +38,33 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['logout'])) {
   </div>
 
   <div class="container">
-    <h1>Welcome, <?php echo $username; ?>!</h1>
-    <p>Kamu telah berhasil login dan ini adalah data Guru</p>
+    <h1>Detail Data Guru</h1>
     <table border="1" cellpadding="10" cellspacing="0">
       <tr>
-        <th>No</th>
-        <th>Aksi</th>
         <th>Nama</th>
         <th>Email</th>
         <th>No Telp</th>
         <th>Guru Mapel</th>
+        <th>Jenis Kelamin</th>
+        <th>Foto</th>
       </tr>
-
-      <?php $i = 1; ?>
-      <?php foreach( $guru as $s ) : ?>
       <tr>
-        <td><?= $i; ?></td>
-        <td><a class="edit-btn" href="updateGuru.php?id=<?= $s['id']; ?>">Edit </a>or <a class="delete-btn" href="deleteGuru.php?id=<?= $s['id']; ?>">Delete</a></td>
-        <td><a href="detailGuru.php?id=<?= $s['id']; ?>"><?= $s["nama"]; ?></a></td>
-        <td><?= $s["email"]; ?></td>
-        <td><?= $s["no_telp"]; ?></td>
-        <td><?= $s["guru_mapel"]; ?></td>
-      </tr>
-      <?php $i++; ?>
-      <?php endforeach; ?>
-      
+        <td><?=($guru["nama"]); ?></td>
+        <td><?=($guru["email"]); ?></td>
+        <td><?=($guru["no_telp"]); ?></td>
+        <td><?=($guru["guru_mapel"]); ?></td>
+        <td><?=($guru["jenis_kelamin"]); ?></td>
+        <td>
+          <?php if ($guru["foto_guru"]) : ?>
+            <img src="image/<?=($guru['foto_guru']); ?>" alt="Foto Guru" width="100" height="100">
+          <?php else: ?>
+            <p>No Image</p>
+          <?php endif; ?>
+        </td>
+      </tr>  
     </table>
-    <a class="add-user" href="createGuru.php">Tambah Data Guru</a>
+
+    <a href="guru.php">Kembali ke daftar guru</a>
 
     <div class="logout-link">
       <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">

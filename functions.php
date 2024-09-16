@@ -156,20 +156,35 @@ function createGuru() {
   $email = htmlspecialchars($_POST["email"]);
   $no_telp = htmlspecialchars($_POST["no_telp"]);
   $guru_mapel = htmlspecialchars($_POST["guru_mapel"]);
-   $q1 = "SELECT nama FROM guru WHERE nama = '$nama'";
-  $r1 = mysqli_query($conn, $q1);
-  if ( mysqli_fetch_assoc($r1) ) {
-    echo "<script>
-    alert('Nama Sudah Terdaftar');
-    </script>";
-      return false;
-    }  
-    $q2 = "INSERT INTO guru VALUES (
-    '', '$nama', '$email', $no_telp, '$guru_mapel')";
+  $jenis_kelamin = $_POST["jenis_kelamin"];
 
-    $r2 = mysqli_query($conn, $q2);
-    return mysqli_affected_rows($conn);
+  $file = $_FILES["file"]["name"];
+  $tmp_name = $_FILES["file"]["tmp_name"];
+  $error = $_FILES["file"]["error"];
+
+  if ($error === 0) {
+      $file_destination = "image/" . $file;
+      move_uploaded_file($tmp_name, $file_destination);
+  } else {
+      echo "<script>alert('Error saat mengunggah file');</script>";
+      return false;
+  }
+
+  $q1 = "SELECT nama FROM guru WHERE nama = '$nama'";
+  $r1 = mysqli_query($conn, $q1);
+  if (mysqli_fetch_assoc($r1)) {
+      echo "<script>
+      alert('Nama Sudah Terdaftar');
+      </script>";
+      return false;
+  }
+
+  $q2 = "INSERT INTO guru (nama, email, no_telp, guru_mapel, jenis_kelamin, foto_guru) VALUES (
+      '$nama', '$email', '$no_telp', '$guru_mapel', '$jenis_kelamin', '$file')";
+  $r2 = mysqli_query($conn, $q2);
+  return mysqli_affected_rows($conn);
 }
+
 
 function createMapel() {
   global $conn;

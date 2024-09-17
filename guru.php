@@ -1,7 +1,6 @@
 <?php
 session_start();
 require "functions.php";
-<<<<<<< HEAD
 $guru = query("SELECT guru.id, guru.nama, guru.email, guru.no_telp, mapel.nama AS nama_mapel
                FROM guru
                JOIN mapel ON guru.guru_mapel = mapel.id");
@@ -12,7 +11,6 @@ if (!isset($_SESSION['session_username'])) {
     $username = htmlspecialchars($_SESSION['session_username']);
 }
 
-=======
 $guru = query("SELECT * FROM guru");
 
 // Check if the user is logged in
@@ -25,7 +23,6 @@ if (!isset($_SESSION['session_username'])) {
 }
 
 // Handle logout logic
->>>>>>> frontend
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['logout'])) {
     session_unset();
     session_destroy();
@@ -80,19 +77,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['logout'])) {
       <?php foreach( $guru as $s ) : ?>
       <tr>
         <td><?= $i; ?></td>
-<<<<<<< HEAD
-        <td><a href="DetailGuru.php?id=<?= $s["id"]; ?>"><?= $s["nama"]; ?></a></td>
-        <td><?= $s["email"]; ?></td>
-        <td><?= $s["no_telp"]; ?></td>
-        <td><?= $s["nama_mapel"]; ?></td>
-=======
-        <td><?= $s["nama"]; ?></td>
-        <td><?= $s["email"]; ?></td>
-        <td><?= $s["no_telp"]; ?></td>
-        <td><?= $s["guru_mapel"]; ?></td>
->>>>>>> frontend
-        <td><a class="edit-btn" href="update.php?tabel=guru&id=<?= $s['id']; ?>">Edit</a><a class="delete-btn"
-            href="delete.php?tabel=guru&id=<?= $s['id']; ?>">Delete</a></td>
+        <<<<<<< HEAD <td><a href="DetailGuru.php?id=<?= $s["id"]; ?>"><?= $s["nama"]; ?></a></td>
+          <td><?= $s["email"]; ?></td>
+          <td><?= $s["no_telp"]; ?></td>
+          <td><?= $s["nama_mapel"]; ?></td>
+          =======
+          <td><?= $s["nama"]; ?></td>
+          <td><?= $s["email"]; ?></td>
+          <td><?= $s["no_telp"]; ?></td>
+          <td><?= $s["guru_mapel"]; ?></td>
+          >>>>>>> frontend
+          <td><a class="edit-btn" href="update.php?tabel=guru&id=<?= $s['id']; ?>">Edit</a><a class="delete-btn"
+              href="delete.php?tabel=guru&id=<?= $s['id']; ?>">Delete</a></td>
       </tr>
       <?php $i++; ?>
       <?php endforeach; ?>

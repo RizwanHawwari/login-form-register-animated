@@ -37,7 +37,8 @@ if (isset($_POST["submit"])) {
             "nama" => $_POST["nama"],
             "email" => $_POST["email"],
             "no_telp" => $_POST["no_telp"],
-            "guru_mapel" => $_POST["guru_mapel"]
+            "guru_mapel" => $_POST["guru_mapel"],
+            "jenis_kelamin" => $_POST["jenis_kelamin"]
         ];
     } elseif ($tabel == "mapel") {
         $fields = [
@@ -68,8 +69,8 @@ if (isset($_POST["submit"])) {
   <div class="container">
     <h1>Tambah Data <?= ucfirst($tabel); ?></h1>
 
-    <form action="" method="post" autocomplete="off" enctype="multipart/form-data">
-      <>
+    <form action="" method="post" autocomplete="off">
+      <ul>
         <?php if ($tabel == "siswa"): ?>
         <li>
           <label for="nama">Nama: </label>
@@ -89,41 +90,37 @@ if (isset($_POST["submit"])) {
         </li>
         <?php elseif ($tabel == "guru"): ?>
         <li>
-            <label for="nama">Nama: </label>
-            <input type="text" id="nama" name="nama" required>
+          <label for="nama">Nama: </label>
+          <input type="text" id="nama" name="nama" required>
         </li>
         <li>
-            <label for="guru_mapel">Mapel: </label>
-            <select name="guru_mapel" id="guru_mapel" required>
-                <?php
-                $mapelQuery = "SELECT * FROM mapel";
-                $mapelResult = mysqli_query($conn, $mapelQuery);
-                while ($mapel = mysqli_fetch_assoc($mapelResult)) {
-                    echo "<option value='{$mapel['id']}'>{$mapel['nama']}</option>";
-                }
-                ?>
-            </select>
+          <label for="guru_mapel">Mapel: </label>
+          <select name="guru_mapel" id="guru_mapel" required>
+            <?php
+            $mapelQuery = "SELECT * FROM mapel";
+            $mapelResult = mysqli_query($conn, $mapelQuery);
+            while ($mapel = mysqli_fetch_assoc($mapelResult)) {
+              echo "<option value='{$mapel['id']}'>{$mapel['nama']}</option>";
+            }
+            ?>
+          </select>
         </li>
         <li>
-            <label for="email">Email: </label>
-            <input type="email" name="email" id="email" required>
+          <label for="email">Email: </label>
+          <input type="email" name="email" id="email" required>
         </li>
         <li>
-            <label for="no_telp">No Telp: </label>
-            <input type="tel" name="no_telp" id="no_telp" required>
+          <label for="no_telp">No Telp: </label>
+          <input type="tel" name="no_telp" id="no_telp" required>
         </li>
         <li>
-            <label for="jenis_kelamin">Perempuan</label>
-            <input type="radio" name="jenis_kelamin" value="Perempuan" id="jenis_kelamin_perempuan" required>
-        </li>
-        <li>
+          <label for="jenis_kelamin">Perempuan</label>
+          <input type="radio" name="jenis_kelamin" value="Perempuan" id="jenis_kelamin_perempuan" required>
+          </li>
+          <li>
             <label for="jenis_kelamin">Laki-laki</label>
-            <input type="radio" name="jenis_kelamin" value="Laki-laki" id="jenis_kelamin_laki" required>
-        </li>
-        <li>
-            <label for="file">Foto Diri:</label>
-            <input type="file" name="file" id="foto" required>
-        </li>
+            <input type="radio" name="jenis_kelamin" value="Laki-laki" id="jenis_kelamin_Laki-laki" required>
+          </li>
         <?php elseif ($tabel == "mapel"): ?>
         <li>
           <label for="kode">Kode: </label>

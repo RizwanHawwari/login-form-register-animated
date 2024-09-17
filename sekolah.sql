@@ -28,6 +28,8 @@ CREATE TABLE `guru` (
   `email` varchar(255) NOT NULL,
   `no_telp` varchar(20) NOT NULL,
   `guru_mapel` varchar(255) NOT NULL,
+  `jenis_kelamin` ENUM('Laki-laki', 'Perempuan'),
+  `foto_guru` VARCHAR(255)
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;

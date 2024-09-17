@@ -3,12 +3,16 @@ session_start();
 require "functions.php";
 $guru = query("SELECT * FROM guru");
 
+// Check if the user is logged in
 if (!isset($_SESSION['session_username'])) {
+    // Logika di sini tetap kosong tanpa redirect atau exit
     $username = "Guest"; // Menampilkan pesan default jika tidak ada username di sesi
 } else {
+    // Fetch user details from session
     $username = htmlspecialchars($_SESSION['session_username']);
 }
 
+// Handle logout logic
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['logout'])) {
     session_unset();
     session_destroy();
@@ -63,7 +67,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['logout'])) {
       <?php foreach( $guru as $s ) : ?>
       <tr>
         <td><?= $i; ?></td>
-        <td><a href="DetailGuru.php?id=<?=$s['id']?>"><?= $s["nama"]; ?></a></td>
+        <td><a href="DetailGuru.php"><?= $s["nama"]; ?></a></td>
         <td><?= $s["email"]; ?></td>
         <td><?= $s["no_telp"]; ?></td>
         <td><?= $s["guru_mapel"]; ?></td>
@@ -74,7 +78,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['logout'])) {
       <?php endforeach; ?>
 
     </table>
-    <a class="add-user" href="createGuru.php?tabel=guru">Tambah Data Guru</a>
+    <a class="add-user" href="create.php?tabel=guru">Tambah Data Guru</a>
 
     <div class="logout-link">
       <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">

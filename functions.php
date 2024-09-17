@@ -118,9 +118,6 @@ function create($table, $fields) {
         echo "<script>alert('Nomor Telepon Sudah Terdaftar');</script>";
         return false;
     }
-
-    $jenis_kelamin = $fieldData['jenis_kelamin'];
-
   }
   
 //buat mapel
@@ -131,7 +128,7 @@ function create($table, $fields) {
 
   $columns = implode(", ", array_keys($fieldData));
   $values = implode("', '", array_values($fieldData));
-  var_dump($fieldData[$field]);
+
   $q4 = "INSERT INTO $table ($columns) VALUES ('$values')";
   $r4 = mysqli_query($conn, $q4);
 

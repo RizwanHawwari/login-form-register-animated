@@ -67,7 +67,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['logout'])) {
       <?php foreach( $guru as $s ) : ?>
       <tr>
         <td><?= $i; ?></td>
-        <td><a href="DetailGuru.php"><?= $s["nama"]; ?></a></td>
+        <td><a href="DetailGuru.php?id=<?= $s['id']; ?>"><?= $s["nama"]; ?></a></td>
         <td><?= $s["email"]; ?></td>
         <td><?= $s["no_telp"]; ?></td>
         <td><?= $s["guru_mapel"]; ?></td>

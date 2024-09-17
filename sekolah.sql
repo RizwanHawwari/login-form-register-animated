@@ -1,8 +1,16 @@
+<<<<<<< HEAD
 -- MariaDB dump 10.19  Distrib 10.4.28-MariaDB, for Win64 (AMD64)
 --
 -- Host: localhost    Database: sekolah
 -- ------------------------------------------------------
 -- Server version	10.4.28-MariaDB
+=======
+-- MariaDB dump 10.19  Distrib 10.4.32-MariaDB, for Win64 (AMD64)
+--
+-- Host: localhost    Database: sekolah
+-- ------------------------------------------------------
+-- Server version	10.4.32-MariaDB
+>>>>>>> frontend
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -27,12 +35,18 @@ CREATE TABLE `guru` (
   `nama` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `no_telp` varchar(20) NOT NULL,
+<<<<<<< HEAD
   `guru_mapel` int(100) NOT NULL,
   `jenis_kelamin` enum('Laki-laki','Perempuan') DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_guru_mapel` (`guru_mapel`),
   CONSTRAINT `fk_guru_mapel` FOREIGN KEY (`guru_mapel`) REFERENCES `mapel` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+=======
+  `guru_mapel` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+>>>>>>> frontend
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -41,7 +55,11 @@ CREATE TABLE `guru` (
 
 LOCK TABLES `guru` WRITE;
 /*!40000 ALTER TABLE `guru` DISABLE KEYS */;
+<<<<<<< HEAD
 INSERT INTO `guru` VALUES (1,'slamet','slamet@gmail.com','08125678123',1,'Laki-laki');
+=======
+INSERT INTO `guru` VALUES (1,'Sri Yuningsih','sriyuningsih@outlook.com','856778122',''),(2,'Aminah','aminah@gmail.com','+62895611728','PAI'),(3,'qwerty','qwerty@gm.com','+62897564365','btq');
+>>>>>>> frontend
 /*!40000 ALTER TABLE `guru` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -54,10 +72,17 @@ DROP TABLE IF EXISTS `mapel`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `mapel` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+<<<<<<< HEAD
   `kode` varchar(255) NOT NULL,
   `nama` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+=======
+  `kode` varchar(100) NOT NULL,
+  `nama` varchar(100) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+>>>>>>> frontend
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -66,7 +91,11 @@ CREATE TABLE `mapel` (
 
 LOCK TABLES `mapel` WRITE;
 /*!40000 ALTER TABLE `mapel` DISABLE KEYS */;
+<<<<<<< HEAD
 INSERT INTO `mapel` VALUES (1,'K03','PAI'),(3,'K08','PJOK'),(4,'K55','SEJARAH');
+=======
+INSERT INTO `mapel` VALUES (1,'K034','PAI');
+>>>>>>> frontend
 /*!40000 ALTER TABLE `mapel` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -82,9 +111,15 @@ CREATE TABLE `siswa` (
   `nama` varchar(255) NOT NULL,
   `nis` int(100) NOT NULL,
   `email` varchar(255) NOT NULL,
+<<<<<<< HEAD
   `no_telp` varchar(100) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+=======
+  `no_telp` varchar(20) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+>>>>>>> frontend
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -93,7 +128,11 @@ CREATE TABLE `siswa` (
 
 LOCK TABLES `siswa` WRITE;
 /*!40000 ALTER TABLE `siswa` DISABLE KEYS */;
+<<<<<<< HEAD
 INSERT INTO `siswa` VALUES (1,'Rizwan Ajahhs',123123,'rzwnajah@gmail.com','+62895123123'),(17,'cartiers',3242341,'ssawisja@yahoo.com','089566112');
+=======
+INSERT INTO `siswa` VALUES (1,'Rizwan Ajahh',123123,'rzwnajah@gmail.com','895123123');
+>>>>>>> frontend
 /*!40000 ALTER TABLE `siswa` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -106,4 +145,8 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
+<<<<<<< HEAD
 -- Dump completed on 2024-09-17 21:40:53
+=======
+-- Dump completed on 2024-09-10  8:53:45
+>>>>>>> frontend

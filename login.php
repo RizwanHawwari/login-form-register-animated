@@ -86,17 +86,27 @@ if (isset($_POST['login'])) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Login</title>
   <link rel="stylesheet" href="css-file/login.css">
+<<<<<<< HEAD
   <!-- <link rel="stylesheet" href="css-file/login.css"> -->
   <!-- <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"> -->
+=======
+>>>>>>> frontend
 </head>
 
 <body>
 
   <div class="container">
+<<<<<<< HEAD
     <div class="logo-cn">
       <img src="img/logo-cn.png" alt="logo-cn" width="100px">
     </div>
     <div class="login-box">
+=======
+    <div class="login-box">
+      <div class="logo-cn">
+        <img src="img/logo-cn.png" alt="logo-cn" width="100px">
+      </div>
+>>>>>>> frontend
       <?php if ($err) { ?>
       <!-- Tampilkan pesan kesalahan jika ada -->
       <div id="error-message">
@@ -117,7 +127,11 @@ if (isset($_POST['login'])) {
           <label>Password</label>
         </div>
 
+<<<<<<< HEAD
         <div class="input-box">
+=======
+        <div class="checkbox-container">
+>>>>>>> frontend
           <input id="login-remember" type="checkbox" name="ingataku" value="1"
             <?php if ($ingataku == '1') echo "checked" ?>>
           <label for="login-remember" class="remember">Remember me</label>
@@ -125,6 +139,7 @@ if (isset($_POST['login'])) {
 
         <!-- Tombol login -->
         <input type="submit" name="login" class="btn" value="Login" />
+<<<<<<< HEAD
         <!-- Tautan ke halaman pendaftaran -->
         <div class="signup-link">
           <a href="register.php">Sign Up</a>
@@ -182,6 +197,41 @@ if (isset($_POST['login'])) {
     <!-- <span style="--i:47;"></span> -->
     <span style="--i:48;"></span>
     <!-- <span style="--i:49;"></span> -->
+=======
+        
+        <div class="signup-link">
+          <a href="register.php">Sign Up</a>
+        </div>
+      </form>
+    </div>
+
+    <span style="--i:0;"></span>
+    <span style="--i:2;"></span>
+    <span style="--i:4;"></span>
+    <span style="--i:6;"></span>
+    <span style="--i:8;"></span>
+    <span style="--i:10;"></span>
+    <span style="--i:12;"></span>
+    <span style="--i:14;"></span>
+    <span style="--i:16;"></span>
+    <span style="--i:18;"></span>
+    <span style="--i:20;"></span>
+    <span style="--i:22;"></span>
+    <span style="--i:24;"></span>
+    <span style="--i:26;"></span>
+    <span style="--i:28;"></span>
+    <span style="--i:30;"></span>
+    <span style="--i:32;"></span>
+    <span style="--i:34;"></span>
+    <span style="--i:36;"></span>
+    <span style="--i:38;"></span>
+    <span style="--i:40;"></span>
+    <span style="--i:42;"></span>
+    <span style="--i:44;"></span>
+    <span style="--i:46;"></span>
+    <span style="--i:48;"></span>
+    <span style="--i:49;"></span>
+>>>>>>> frontend
   </div>
 </body>
 

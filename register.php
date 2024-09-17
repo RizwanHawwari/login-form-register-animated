@@ -79,7 +79,10 @@ if (isset($_POST['register'])) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
+<<<<<<< HEAD
 
+=======
+>>>>>>> frontend
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -87,6 +90,7 @@ if (isset($_POST['register'])) {
   <title>Register</title>
   <link rel="stylesheet" href="css-file/register.css">
 </head>
+<<<<<<< HEAD
 
 <body>
   <div class="container">
@@ -94,6 +98,16 @@ if (isset($_POST['register'])) {
       <img src="img/logo-cn.png" alt="logo-cn" width="60px">
     </div>
     <div class="login-box">
+=======
+<body>
+  <div class="container">
+    <div class="login-box">
+      <div class="logo-cn">
+        <div class="logo-bg">
+          <img src="img/logo-cn.png" alt="logo-cn" width="100px">
+        </div>
+      </div>
+>>>>>>> frontend
       <h2>Create An Account</h2>
       <?php if ($err) { ?>
       <div id="register-alert" class="alert">
@@ -101,6 +115,7 @@ if (isset($_POST['register'])) {
       </div>
       <?php } ?>
       <form id="registerform" action="" method="post" role="form" autocomplete="off">
+<<<<<<< HEAD
         <div class="input-box">
           <input id="register-username" type="text" name="username" placeholder=" "
             value="<?php echo htmlspecialchars($username) ?>" required>
@@ -126,10 +141,42 @@ if (isset($_POST['register'])) {
         </div>
         <input type="submit" name="register" class="btn" value="Register">
       </form>
+=======
+  <div class="form-row">
+    <div class="input-box">
+      <input id="register-username" type="text" name="username" placeholder=" "
+        value="<?php echo htmlspecialchars($username) ?>" required>
+      <label>Username</label>
+    </div>
+    <div class="input-box">
+      <input id="register-email" type="text" name="email" placeholder=" "
+        value="<?php echo htmlspecialchars($email) ?>" required>
+      <label>Email</label>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="input-box">
+      <input id="register-password" type="password" name="password" placeholder=" " required>
+      <label>Password</label>
+    </div>
+    <div class="input-box">
+      <input id="register-konfirmasi-password" type="password" name="konfirmasi_password" placeholder=" " required>
+      <label>Confirm Password</label>
+    </div>
+  </div>
+  <div class="input-box full-width">
+    <input id="register-no-telp" type="text" name="no_telp" value="<?php echo htmlspecialchars($no_telp) ?>"
+      placeholder=" " required>
+    <label>Phone Number</label>
+  </div>
+  <input type="submit" name="register" class="btn" value="Register">
+</form>
+>>>>>>> frontend
       <div class="login">
         <a href="login.php">Log In</a>
       </div>
     </div>
+<<<<<<< HEAD
 
     <span style="--i:0;"></span>
     <!-- <span style="--i:1;"></span> -->
@@ -184,4 +231,34 @@ if (isset($_POST['register'])) {
   </div>
 </body>
 
+=======
+    
+    <!-- <span style="--i:0;"></span>
+    <span style="--i:2;"></span>
+    <span style="--i:4;"></span>
+    <span style="--i:6;"></span>
+    <span style="--i:8;"></span>
+    <span style="--i:10;"></span>
+    <span style="--i:12;"></span>
+    <span style="--i:14;"></span>
+    <span style="--i:16;"></span>
+    <span style="--i:18;"></span>
+    <span style="--i:20;"></span>
+    <span style="--i:22;"></span>
+    <span style="--i:24;"></span>
+    <span style="--i:26;"></span>
+    <span style="--i:28;"></span>
+    <span style="--i:30;"></span>
+    <span style="--i:32;"></span>
+    <span style="--i:34;"></span>
+    <span style="--i:36;"></span>
+    <span style="--i:38;"></span>
+    <span style="--i:40;"></span>
+    <span style="--i:42;"></span>
+    <span style="--i:44;"></span>
+    <span style="--i:46;"></span>
+    <span style="--i:48;"></span> -->
+  </div>
+</body>
+>>>>>>> frontend
 </html>

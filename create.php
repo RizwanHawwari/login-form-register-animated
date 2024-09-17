@@ -37,7 +37,8 @@ if (isset($_POST["submit"])) {
             "nama" => $_POST["nama"],
             "email" => $_POST["email"],
             "no_telp" => $_POST["no_telp"],
-            "guru_mapel" => $_POST["guru_mapel"]
+            "guru_mapel" => $_POST["guru_mapel"],
+            "jenis_kelamin" => $_POST["jenis_kelamin"]
         ];
     } elseif ($tabel == "mapel") {
         $fields = [
@@ -112,6 +113,14 @@ if (isset($_POST["submit"])) {
           <label for="no_telp">No Telp: </label>
           <input type="tel" name="no_telp" id="no_telp" required>
         </li>
+        <li>
+          <label for="jenis_kelamin">Perempuan</label>
+          <input type="radio" name="jenis_kelamin" value="Perempuan" id="jenis_kelamin_perempuan" required>
+          </li>
+          <li>
+            <label for="jenis_kelamin">Laki-laki</label>
+            <input type="radio" name="jenis_kelamin" value="Laki-laki" id="jenis_kelamin_Laki-laki" required>
+          </li>
         <?php elseif ($tabel == "mapel"): ?>
         <li>
           <label for="kode">Kode: </label>

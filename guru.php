@@ -1,18 +1,16 @@
 <?php
 session_start();
 require "functions.php";
-$guru = query("SELECT * FROM guru");
+$guru = query("SELECT guru.id, guru.nama, guru.email, guru.no_telp, mapel.nama AS nama_mapel
+               FROM guru
+               JOIN mapel ON guru.guru_mapel = mapel.id");
 
-// Check if the user is logged in
 if (!isset($_SESSION['session_username'])) {
-    // Logika di sini tetap kosong tanpa redirect atau exit
-    $username = "Guest"; // Menampilkan pesan default jika tidak ada username di sesi
+    $username = "Guest";
 } else {
-    // Fetch user details from session
     $username = htmlspecialchars($_SESSION['session_username']);
 }
 
-// Handle logout logic
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['logout'])) {
     session_unset();
     session_destroy();
@@ -67,10 +65,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['logout'])) {
       <?php foreach( $guru as $s ) : ?>
       <tr>
         <td><?= $i; ?></td>
-        <td><?= $s["nama"]; ?></td>
+        <td><a href="DetailGuru.php?id=<?= $s["id"]; ?>"><?= $s["nama"]; ?></a></td>
         <td><?= $s["email"]; ?></td>
         <td><?= $s["no_telp"]; ?></td>
-        <td><?= $s["guru_mapel"]; ?></td>
+        <td><?= $s["nama_mapel"]; ?></td>
         <td><a class="edit-btn" href="update.php?tabel=guru&id=<?= $s['id']; ?>">Edit</a><a class="delete-btn"
             href="delete.php?tabel=guru&id=<?= $s['id']; ?>">Delete</a></td>
       </tr>

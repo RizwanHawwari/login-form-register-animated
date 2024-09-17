@@ -1,0 +1,108 @@
+:root {
+  --primary: #eaeaea; /* warna utama yang lebih lembut */
+  --secondary: #424242; /* warna sekunder yang lebih netral */
+  --tertiary: #f8f6ff; /* warna latar belakang form */
+  --background: #f8f6ff; /* warna background halaman */
+  --input-bg: #ffffff; /* latar belakang field input lebih terang */
+  --input-border: #424242; /* garis tepi field */
+  --button-bg: #424242; /* tombol submit */
+  --button-text: #ffffff; /* teks tombol */
+  --hover-bg: #616161; /* warna saat hover tombol */
+  --error-bg: #fdecec; /* warna latar belakang untuk error */
+  --error-text: #b85c5c; /* warna teks error */
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: var(--background); /* latar belakang yang lebih terang */
+  color: var(--secondary);
+}
+
+h1 {
+  text-align: center;
+  color: var(--secondary);
+  margin-bottom: 20px;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  padding-top: 20px;
+}
+
+.form-control {
+  background-color: var(--primary); /* warna utama lebih lembut untuk form */
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* bayangan lebih lembut */
+}
+
+form ul {
+  list-style: none;
+}
+
+form li {
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: var(--secondary);
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  background: var(--input-bg); /* background input lebih netral */
+  border: 1px solid var(--input-border); /* warna border lebih tenang */
+  border-radius: 5px;
+  color: var(--secondary);
+}
+
+input:focus {
+  outline: none;
+  border-color: var(--secondary);
+  box-shadow: 0 0 8px var(--secondary);
+}
+
+button {
+  padding: 10px 20px;
+  background-color: var(--button-bg); /* tombol dengan warna tenang */
+  border: none;
+  border-radius: 5px;
+  color: var(--button-text);
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: var(--hover-bg); /* warna hover lebih tenang */
+}
+
+.alert {
+  padding: 10px;
+  background-color: var(--error-bg); /* latar belakang untuk error */
+  color: var(--error-text); /* warna teks error */
+  border: 1px solid var(--error-text);
+  border-radius: 5px;
+}
+
+.alert ul {
+  list-style: none;
+}
+
+.alert ul li {
+  text-align: center;
+}

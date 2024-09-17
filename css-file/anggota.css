@@ -1,0 +1,187 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+:root {
+  --secondary: #424242;
+  --primary: #eaeaea;
+  --third: #f8f6ff;
+  --error-bg: #fdecec;
+  --error-text: #b85c5c;
+}
+* {
+  margin: 0;
+  text-align: center;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+body {
+  /* position: relative; */
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+  min-height: 100vh;
+  background: var(--primary);
+  overflow: hidden;
+}
+header {
+  background-color: var(--secondary);
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+header .brand {
+  color: var(--primary);
+  font-size: 1.9rem;
+  font-weight: 600;
+  /* letter-spacing: 1px; */
+}
+header ul {
+  width: auto;
+  padding: 10px;
+  display: flex;
+  /* background-color: red; */
+}
+header ul li {
+  list-style-type: none;
+  margin: 0 20px;
+}
+header ul li a {
+  color: var(--primary);
+  font-size: 1.3rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: 0.3s;
+}
+header ul li a:hover {
+  color: lightskyblue;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  /* height: 530px; */
+  max-width: 1200px;
+  padding: 20px;
+  background-color: var(--tertiary);
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  margin: 150px auto;
+}
+.container .welcome {
+  background-color: var(--secondary);
+  color: var(--primary);
+  font-size: 2.5em;
+  padding: 5px 20px;
+  border-radius: 12px;
+  margin: 20px 0;
+}
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+p {
+  color: var(--secondary);
+  font-size: 1.2em;
+  margin-bottom: 20px;
+  text-align: center;
+}
+.btn {
+  display: inline-block;
+  width: auto;
+  padding: 8px 20px;
+  background: var(--secondary);
+  border: none;
+  border-radius: 40px;
+  color: var(--primary);
+  font-size: 1em;
+  font-weight: 600;
+  text-decoration: none;
+  text-align: center;
+  transition: background 0.3s ease;
+  cursor: pointer;
+}
+table {
+  border-collapse: collapse;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+}
+.btn:hover {
+  background: #0b3c4a;
+  color: #fff;
+}
+.logout-link {
+  margin-top: 20px;
+  /* margin-top: 100px; */
+}
+/* .user-info {
+  position: absolute;
+  top: 30px;
+  right: 40px;
+} */
+/* .user-info p {
+  border: 1px solid #fff;
+  border-radius: 12px;
+  padding: 6px;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+} */
+.container table th,
+.container table td {
+  padding: 18px;
+  color: var(--secondary);
+}
+th {
+  background-color: #fff;
+  border-bottom: 3px solid rgba(0, 0, 0, 0.2);
+}
+tr:nth-child(even) {
+  background-color: rgba(128, 128, 128, 0.1);
+}
+tr:nth-child(odd) {
+  background-color: white;
+}
+.add-user {
+  color: white;
+  margin-top: 20px;
+  background-color: var(--secondary);
+  text-decoration: none;
+  width: 20%;
+  color: var(--primary);
+  height: 10%;
+  text-align: center;
+  border-radius: 10px;
+  transition: background 0.3s ease;
+  padding: 10px 5px;
+  font-weight: 600;
+}
+.add-user:hover {
+  background-color: #0b3c4a;
+  color: white;
+}
+td a {
+  color: white;
+}
+.edit-btn {
+  margin-right: 10px;
+  text-decoration: none;
+  color: #fff;
+  background-color: turquoise;
+  padding: 5px 30px;
+  border-radius: 8px;
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
+}
+.delete-btn {
+  text-decoration: none;
+  color: #fff;
+  background-color: rgb(214, 43, 43);
+  padding: 5px 26px;
+  border-radius: 8px;
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
+}

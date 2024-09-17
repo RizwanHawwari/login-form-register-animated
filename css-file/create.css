@@ -1,0 +1,90 @@
+:root {
+    --primary: #eaeaea; /* warna utama yang lebih lembut */
+    --secondary: #424242; /* warna sekunder yang lebih netral */
+    --tertiary: #f8f6ff; /* warna latar belakang form */
+    --background: #f8f6ff; /* background halaman lebih tenang */
+    --input-bg: #ffffff; /* warna latar belakang field input */
+    --input-border: #424242; /* garis tepi field input */
+    --button-bg: #424242; /* tombol submit */
+    --button-text: #ffffff; /* teks tombol */
+    --hover-bg: #616161; /* warna hover tombol */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: var(--background); /* background yang lebih lembut */
+    color: var(--secondary);
+}
+
+h1 {
+    text-align: center;
+    color: var(--secondary);
+    margin-bottom: 20px;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    padding-top: 20px;
+}
+
+.form-control {
+    background-color: var(--primary); /* background form lebih lembut */
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* bayangan lebih halus */
+}
+
+form ul {
+    list-style: none;
+}
+
+form li {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: var(--secondary); /* warna teks label lebih netral */
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    background: var(--input-bg); /* background field input lebih terang */
+    border: 1px solid var(--input-border); /* garis tepi field */
+    border-radius: 5px;
+    color: var(--secondary); /* warna teks di field */
+}
+
+input:focus {
+    outline: none;
+    border-color: var(--secondary); /* warna fokus input */
+    box-shadow: 0 0 8px var(--secondary); /* efek shadow saat fokus */
+}
+
+button {
+    padding: 10px 20px;
+    background-color: var(--button-bg); /* tombol submit */
+    border: none;
+    border-radius: 5px;
+    color: var(--button-text); /* teks tombol */
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: var(--hover-bg); /* warna hover tombol */
+}

@@ -3,7 +3,10 @@ session_start();
 require "functions.php";
 $id = $_GET["id"];
 
-$guru = query("SELECT * FROM guru WHERE id = $id")[0];
+$gurus = query("SELECT guru.id, guru.nama, guru.email, guru.no_telp, guru.jenis_kelamin, mapel.nama AS nama_mapel
+               FROM guru
+               JOIN mapel ON guru.guru_mapel = mapel.id");
+// $guru = query("SELECT * FROM guru WHERE id = $id")[0];
 
 if (!isset($_SESSION['session_username'])) {
     $username = "Guest"; // Menampilkan pesan default jika tidak ada username di sesi
@@ -29,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['logout'])) {
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Detail Guru</title>
-  <link rel="stylesheet" href="css-file/anggota.css"> 
+  <link rel="stylesheet" href="css-file/anggota.css">
 </head>
 
 <body>
@@ -46,22 +49,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['logout'])) {
         <th>No Telp</th>
         <th>Guru Mapel</th>
         <th>Jenis Kelamin</th>
-        <th>Foto</th>
       </tr>
+      <?php foreach( $gurus as $guru ) : ?>
       <tr>
         <td><?= $guru["nama"]; ?></td>
         <td><?= $guru["email"]; ?></td>
         <td><?= $guru["no_telp"]; ?></td>
-        <td><?= $guru["guru_mapel"]; ?></td>
+        <td><?= $guru["nama_mapel"]; ?></td>
         <td><?= $guru["jenis_kelamin"]; ?></td>
-        <td>
-          <?php if ($guru["foto_guru"]) : ?>
-            <img src="img/<?= $guru['foto_guru']; ?>" alt="Foto Guru" width="100" height="100">
-          <?php else: ?>
-            <p>No Image</p>
-          <?php endif; ?>
-        </td>
-      </tr>  
+      </tr>
+      <?php endforeach; ?>
     </table>
 
     <a href="guru.php">Kembali ke daftar guru</a>

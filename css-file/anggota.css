@@ -166,7 +166,7 @@ tr:nth-child(odd) {
   color: white;
 }
 td a {
-  color: white;
+  color: var(--secondary);
 }
 .edit-btn {
   margin-right: 10px;

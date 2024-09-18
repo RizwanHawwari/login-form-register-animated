@@ -4,8 +4,9 @@ require "functions.php";
 $id = $_GET["id"];
 
 $gurus = query("SELECT guru.id, guru.nama, guru.email, guru.no_telp, guru.jenis_kelamin, mapel.nama AS nama_mapel
-               FROM guru
-               JOIN mapel ON guru.guru_mapel = mapel.id");
+                FROM guru
+                JOIN mapel ON guru.guru_mapel = mapel.id
+                WHERE guru.id = $id");
 // $guru = query("SELECT * FROM guru WHERE id = $id")[0];
 
 if (!isset($_SESSION['session_username'])) {
